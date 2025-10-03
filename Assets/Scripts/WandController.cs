@@ -18,7 +18,7 @@ public class WandController : MonoBehaviour
         if (!Input.GetButtonDown("Fire1")) return;
         
         // 0 is the "Attack" parameter of the wand. You can check these in the animator window.
-        _animator.SetTrigger(0);
+        _animator.SetTrigger(Animator.StringToHash("Attack"));
         BasicAttack();
     }
 
