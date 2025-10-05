@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664465534}
   - component: {fileID: 664465535}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 1052811288}
   - component: {fileID: 1052811291}
   - component: {fileID: 1052811290}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,5 +555,5 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 664465534}
-  - {fileID: 999740806}
   - {fileID: 5555031473667690325}
+  - {fileID: 999740806}
