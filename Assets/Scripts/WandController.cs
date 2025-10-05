@@ -6,28 +6,32 @@ public class WandController : MonoBehaviour
 {
     public List<string> attacks;
     public List<GameObject> attackObjects;
-    private int _selectedAttack = 0;
-    
+    private int _selectedAttack = 1;
+
     private Animator _animator;
 
     private Camera _playerCamera;
-    
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
-    
+
     private void Update()
     {
         if (!Input.GetButtonDown("Fire1")) return;
-        
+
         switch (_selectedAttack)
         {
             case 0:
                 // Somehow, this is faster than the direct string lookup.
                 _animator.SetTrigger(Animator.StringToHash("Attack"));
                 BasicAttack();
+                break;
+            case 1:
+                _animator.SetTrigger(Animator.StringToHash("Attack"));
+                RockAttack();
                 break;
             default:
                 Debug.LogError("Tried to use an invalid attack!");
@@ -42,7 +46,16 @@ public class WandController : MonoBehaviour
         var attackObjectPosition = forward * 1.5f + transform.position;
         var attackObjectInstance = Instantiate(attackObject, attackObjectPosition, transform.rotation);
         var attackObjectForce = attackObjectInstance.GetComponent<AttackObject>().objectForce;
-        
+
         attackObjectInstance.GetComponent<Rigidbody>().AddForce(forward * attackObjectForce, ForceMode.Impulse);
+    }
+
+    // Function to call the RockAttack method in the rockAttack script, passing the caller's transform data.
+    private void RockAttack()
+    {
+        //Debug.Log("Rock attack!");
+        var rockObjectSpell = attackObjects[_selectedAttack];
+        rockObjectSpell.GetComponent<RockAttack>().RockAttackSpell(_playerCamera.transform);
+
     }
 }

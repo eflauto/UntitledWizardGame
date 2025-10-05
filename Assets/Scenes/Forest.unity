@@ -543,6 +543,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: attacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: 'attacks.Array.data[1]'
+      value: Rock Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: attackObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: 'attackObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1759075042098288174, guid: 31f39f5a6e930bd439bd41c7406b2c4c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
