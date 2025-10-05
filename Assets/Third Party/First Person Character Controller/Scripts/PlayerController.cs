@@ -11,8 +11,7 @@ public class PlayerController : MonoBehaviour
     public float sprintSpeed = 10.0f;
     [Tooltip("Jump height for when the player jumps, adjust if needed")]
     public float jumpHeight = 9.0f;
- 
-
+    
     [Tooltip("Automatic set to the normal gravity value, adjust if needed or for testing, gravity is needed for CharacterController")]
     public float gravity = -9.81f; //normal gravity value for jumping
     private float playerVelocity; //vertical velocity for jumping
@@ -50,6 +49,7 @@ public class PlayerController : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 move = transform.right * h + transform.forward * v; // makes sure to follow the movement of the camera, does not work properly without it
         move *= appliedSpeed; //multiplying the move vector by the player speed/sprint speed
+        move = AdjustVelocityToSlope(move);
         
         if (Input.GetButtonDown("Jump") && playerController.isGrounded)
         {
@@ -57,8 +57,7 @@ public class PlayerController : MonoBehaviour
         }
 
         playerVelocity += gravity * Time.deltaTime; // always apply gravity to the player
-        move.y = playerVelocity; // apply the player's velocity to the movement vector  
-        move = AdjustVelocityToSlope(move);
+        move.y += playerVelocity; // apply the player's velocity to the movement vector;
         playerController.Move(move * Time.deltaTime); // .move is called, noted that .move should be called only once
         //Debug.Log(playerController.isGrounded); 
         

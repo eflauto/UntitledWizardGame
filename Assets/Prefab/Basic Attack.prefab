@@ -10010,4 +10010,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 10
-  objectForce: 500
+  objectForce: 20

@@ -9,7 +9,7 @@ public class WandController : MonoBehaviour
     private int _selectedAttack = 0;
     
     private Animator _animator;
-    
+
     private Camera _playerCamera;
     
     private void Start()
@@ -42,6 +42,6 @@ public class WandController : MonoBehaviour
         var attackObjectForce = attackObjectInstance.GetComponent<AttackObject>().objectForce;
         var forward = _playerCamera.transform.TransformDirection(Vector3.forward);
         
-        attackObjectInstance.GetComponent<Rigidbody>().AddForce(forward * attackObjectForce);
+        attackObjectInstance.GetComponent<Rigidbody>().AddForce(forward * attackObjectForce, ForceMode.Impulse);
     }
 }
