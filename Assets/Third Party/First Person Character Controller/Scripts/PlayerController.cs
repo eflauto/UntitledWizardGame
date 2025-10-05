@@ -20,9 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
         playerController = GetComponent<CharacterController>();
-
     }
 
     // Update is called once per frame
@@ -55,23 +53,29 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetButtonDown("Jump") && playerController.isGrounded)
         {
-            playerVelocity += Mathf.Sqrt(jumpHeight * -2.0f * gravity);
-            // phsics formula for jumping
-            
-            
+            playerVelocity += Mathf.Sqrt(jumpHeight * -2.0f * gravity); // physics formula for jumping
         }
 
         playerVelocity += gravity * Time.deltaTime; // always apply gravity to the player
         move.y = playerVelocity; // apply the player's velocity to the movement vector  
+        move = AdjustVelocityToSlope(move);
         playerController.Move(move * Time.deltaTime); // .move is called, noted that .move should be called only once
         //Debug.Log(playerController.isGrounded); 
         
     }
 
+    private Vector3 AdjustVelocityToSlope(Vector3 velocity)
+    {
+        Ray ray = new(transform.position, Vector3.down);
 
-
-
-
-
-
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 2.0f))
+        {
+            var slopeRotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            var adjustedVelocity = slopeRotation * velocity;
+            
+            if (adjustedVelocity.y < 0) return adjustedVelocity;
+        }
+        
+        return velocity;
+    }
 }
