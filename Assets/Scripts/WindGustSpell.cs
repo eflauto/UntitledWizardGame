@@ -15,15 +15,16 @@ public class WindGustSpell : MonoBehaviour
 
     public void WindGust(Transform callerTransform)
     {
-        //Debug.Log(callerTransform.transform, callerTransform.forward);
-        UnityEngine.Object instance = Instantiate(WindCapsuleObject, callerTransform.position, callerTransform.rotation);
-        //Collider[] windBlastedColliders = Physics.OverlapCapsule(WindCapsuleObject.GetComponent<Collider>().);
-        Vector3 fwd = callerTransform.TransformDirection(Vector3.forward);
-        var windBlastedColliders = Physics.SphereCastAll(callerTransform.position, windRadius, fwd, windDistance);
-        foreach (var collider in windBlastedColliders)
+        var instance = Instantiate(windCapsuleObject, callerTransform.position, callerTransform.rotation);
+        var fwd = callerTransform.TransformDirection(Vector3.forward);
+        var windSpawnPosition = fwd * 1.5f + callerTransform.position;
+        var windBlastedHits = Physics.SphereCastAll(windSpawnPosition, windRadius, fwd, windDistance, layerMask);
+        
+        foreach (var rayHit in windBlastedHits)
         {
-            collider.rigidbody.AddForce(fwd * windForce, ForceMode.Impulse);
+            rayHit.transform.GetComponent<Rigidbody>().AddForce(fwd.normalized * windForce, ForceMode.Impulse);
         }
+        
         //Destroy(instance, 2.0f); TODO: get self-destruction working
         
     }
