@@ -6,7 +6,9 @@ public class WandController : MonoBehaviour
 {
     public List<string> attacks;
     public List<GameObject> attackObjects;
-    private int _selectedAttack = 1;
+    // added selected attack to public for now for easier testing
+    // TODO: re-privatize selected attack later, make internal function that allows variable to be changed to only valid values
+    public int _selectedAttack = 2;
 
     private Animator _animator;
 
@@ -33,6 +35,10 @@ public class WandController : MonoBehaviour
                 _animator.SetTrigger(Animator.StringToHash("Attack"));
                 RockAttack();
                 break;
+            case 2:
+                _animator.SetTrigger(Animator.StringToHash("Attack"));
+                WindGust();
+                break;
             default:
                 Debug.LogError("Tried to use an invalid attack!");
                 break;
@@ -56,6 +62,13 @@ public class WandController : MonoBehaviour
         //Debug.Log("Rock attack!");
         var rockObjectSpell = attackObjects[_selectedAttack];
         rockObjectSpell.GetComponent<RockAttack>().RockAttackSpell(_playerCamera.transform);
+
+    }
+    private void WindGust()
+    {
+        //Debug.Log("Wind gust!");
+        var spellObject = attackObjects[_selectedAttack];
+        spellObject.GetComponent<WindGustSpell>().WindGust(_playerCamera.transform);
 
     }
 }
