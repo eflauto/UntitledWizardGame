@@ -7,7 +7,7 @@ TODO: fix this madness
 */
 public class WindGustSpell : MonoBehaviour
 {
-    public UnityEngine.Object WindCapsuleObject;
+    public GameObject windCapsuleObject;
     public float windDistance = 4.0f;
     public float windRadius = 0.5f;
     public float windForce = 100;
