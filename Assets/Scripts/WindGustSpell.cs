@@ -11,6 +11,7 @@ public class WindGustSpell : MonoBehaviour
     public float windDistance = 4.0f;
     public float windRadius = 0.5f;
     public float windForce = 100;
+    public LayerMask layerMask;
 
     public void WindGust(Transform callerTransform)
     {
