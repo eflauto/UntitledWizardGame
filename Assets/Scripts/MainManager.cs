@@ -3,6 +3,7 @@ using UnityEngine;
 public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
+    public int selectedSpell = 0;
 
     private void Awake()
     {
@@ -14,5 +15,10 @@ public class MainManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void NewSpellSelected(int spellIndex)
+    {
+        Instance.selectedSpell = spellIndex;
     }
 }
