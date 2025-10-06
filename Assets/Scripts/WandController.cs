@@ -1,14 +1,10 @@
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class WandController : MonoBehaviour
 {
     public List<string> attacks;
     public List<GameObject> attackObjects;
-    // added selected attack to public for now for easier testing
-    // TODO: re-privatize selected attack later, make internal function that allows variable to be changed to only valid values
-    public int _selectedAttack = 2;
 
     private Animator _animator;
 
@@ -22,33 +18,36 @@ public class WandController : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetButtonDown("Fire1")) return;
-
-        switch (_selectedAttack)
+        if (Input.GetButtonDown("Fire1"))
         {
-            case 0:
-                // Somehow, this is faster than the direct string lookup.
-                _animator.SetTrigger(Animator.StringToHash("Attack"));
-                BasicAttack();
-                break;
-            case 1:
-                _animator.SetTrigger(Animator.StringToHash("Attack"));
-                RockAttack();
-                break;
-            case 2:
-                _animator.SetTrigger(Animator.StringToHash("Attack"));
-                WindGust();
-                break;
-            default:
-                Debug.LogError("Tried to use an invalid attack!");
-                break;
+            switch (MainManager.Instance.selectedSpell)
+            {
+                case 0:
+                    // Somehow, this is faster than the direct string lookup.
+                    _animator.SetTrigger(Animator.StringToHash("Attack"));
+                    BasicAttack();
+                    break;
+                case 1:
+                    _animator.SetTrigger(Animator.StringToHash("Attack"));
+                    RockAttack();
+                    break;
+                case 2:
+                    _animator.SetTrigger(Animator.StringToHash("Attack"));
+                    WindGust();
+                    break;
+                default:
+                    Debug.LogError("Tried to use an invalid attack!");
+                    break;
+            }
         }
+
+        CheckForSpellChange();
     }
 
     private void BasicAttack()
     {
         var forward = _playerCamera.transform.TransformDirection(Vector3.forward);
-        var attackObject = attackObjects[_selectedAttack];
+        var attackObject = attackObjects[MainManager.Instance.selectedSpell];
         var attackObjectPosition = forward * 1.5f + transform.position;
         var attackObjectInstance = Instantiate(attackObject, attackObjectPosition, transform.rotation);
         var attackObjectForce = attackObjectInstance.GetComponent<AttackObject>().objectForce;
@@ -60,15 +59,44 @@ public class WandController : MonoBehaviour
     private void RockAttack()
     {
         //Debug.Log("Rock attack!");
-        var rockObjectSpell = attackObjects[_selectedAttack];
+        var rockObjectSpell = attackObjects[MainManager.Instance.selectedSpell];
         rockObjectSpell.GetComponent<RockAttack>().RockAttackSpell(_playerCamera.transform);
 
     }
     private void WindGust()
     {
         //Debug.Log("Wind gust!");
-        var spellObject = attackObjects[_selectedAttack];
+        var spellObject = attackObjects[MainManager.Instance.selectedSpell];
         spellObject.GetComponent<WindGustSpell>().WindGust(_playerCamera.transform);
 
+    }
+
+    private void CheckForSpellChange()
+    {
+        var spellIndex = MainManager.Instance.selectedSpell;
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            spellIndex++;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            spellIndex--;
+        }
+        else if (Input.anyKeyDown)
+        {
+            for (var numPressed = 1; numPressed < attacks.Count + 1; numPressed++)
+            {
+                if (Input.GetKeyDown(numPressed.ToString()))
+                {
+                    spellIndex = numPressed - 1;
+                }
+            }
+        }
+        
+        if (spellIndex < 0) { spellIndex = attacks.Count - 1; }
+        if (spellIndex > attacks.Count - 1) { spellIndex = 0; }
+        
+        if (!MainManager.Instance.selectedSpell.Equals(spellIndex)) { MainManager.Instance.NewSpellSelected(spellIndex); }
     }
 }
