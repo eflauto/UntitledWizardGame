@@ -35,6 +35,10 @@ public class WandController : MonoBehaviour
                     _animator.SetTrigger(Animator.StringToHash("Attack"));
                     WindGust();
                     break;
+                case 3:
+                    _animator.SetTrigger(Animator.StringToHash("Attack"));
+                    FireBreath();
+                    break;
                 default:
                     Debug.LogError("Tried to use an invalid attack!");
                     break;
@@ -70,6 +74,13 @@ public class WandController : MonoBehaviour
         spellObject.GetComponent<WindGustSpell>().WindGust(_playerCamera.transform);
 
     }
+    private void FireBreath()
+    {
+        //Debug.Log("Fire Breath!");
+        var spellObject = attackObjects[MainManager.Instance.selectedSpell];
+        spellObject.GetComponent<FireBreathSpell>().FireBreath(_playerCamera.transform);
+
+    }
 
     private void CheckForSpellChange()
     {
@@ -93,10 +104,10 @@ public class WandController : MonoBehaviour
                 }
             }
         }
-        
+
         if (spellIndex < 0) { spellIndex = attacks.Count - 1; }
         if (spellIndex > attacks.Count - 1) { spellIndex = 0; }
-        
+
         if (!MainManager.Instance.selectedSpell.Equals(spellIndex)) { MainManager.Instance.NewSpellSelected(spellIndex); }
     }
 }

@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3355a6464542b174ab53195f699eefbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedSpell: 0
 --- !u!4 &999740806
 Transform:
   m_ObjectHideFlags: 0
@@ -618,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: attacks.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: 'attacks.Array.data[1]'
@@ -629,8 +630,12 @@ PrefabInstance:
       value: Wind Gust
       objectReference: {fileID: 0}
     - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: 'attacks.Array.data[3]'
+      value: Fire Breath
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: attackObjects.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: 'attackObjects.Array.data[1]'
@@ -640,6 +645,10 @@ PrefabInstance:
       propertyPath: 'attackObjects.Array.data[2]'
       value: 
       objectReference: {fileID: 4601731883540878242, guid: 8fbde40fb464c9746a681eb23a45df78, type: 3}
+    - target: {fileID: 8534411870545627160, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: 'attackObjects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 14117556874503128, guid: 24587568de1dc3641b9056f40d4c9f03, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

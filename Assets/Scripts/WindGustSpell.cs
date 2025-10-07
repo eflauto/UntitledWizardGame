@@ -1,9 +1,7 @@
 using UnityEngine;
 
 /*
-Currently Broken
-TODO: fix this madness
-- currently struggling both with orientation of the created prefab, getting the prefab to add force of some kind to a rigidbody, and with self deletion.
+
 */
 public class WindGustSpell : MonoBehaviour
 {
