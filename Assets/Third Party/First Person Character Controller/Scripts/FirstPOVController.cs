@@ -11,7 +11,6 @@ public class FirstPOVController : MonoBehaviour
 {
     [Header("First Person POV Camera Settings")]
     [Tooltip("Mouse sensitivity for rotating, lower if rotating is too fast")]
-    public float sensitivity = 5.0f; // mouse sensitivity 
     private float rotation = 0f;
     [Tooltip("Place Player object here for horizontal rotation")]
     public Transform player; // rotation for camera
@@ -27,8 +26,19 @@ public class FirstPOVController : MonoBehaviour
 
 
         // mouse movement moves camera 
-        float horizontal = Input.GetAxisRaw("Mouse X") * sensitivity;
-        float vertical = Input.GetAxisRaw("Mouse Y") * sensitivity;
+        float horizontal = Input.GetAxisRaw("Mouse X") * MainManager.Instance.mouseSensitivityX;
+        float vertical = Input.GetAxisRaw("Mouse Y") * MainManager.Instance.mouseSensitivityY;
+
+        if (MainManager.Instance.invertX)
+        {
+            horizontal *= -1;
+        }
+
+        if (MainManager.Instance.invertY)
+        {
+            vertical *= -1;
+        }
+        
         rotation -= vertical; // subtract the rotation value by the vertical input 
         // vertical movement
         rotation = Mathf.Clamp(rotation, -90f, 90f);  // clamp the rotation value between 90 and -90 to avoid overrotation
