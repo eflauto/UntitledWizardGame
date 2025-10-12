@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ public class OptionsMenu : MonoBehaviour
     public void UpdateFPS()
     {
         MainManager.Instance.fpsTarget = (int)fpsSlider.value;
-        fpsSlider.transform.Find("Value").GetComponent<Text>().text = MainManager.Instance.fpsTarget.ToString();
+        fpsSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = MainManager.Instance.fpsTarget.ToString();
     }
 
     public void UpdateInvertX()
@@ -35,14 +36,14 @@ public class OptionsMenu : MonoBehaviour
     {
         MainManager.Instance.mouseSensitivityX =  sensitivitySlider.value;
         MainManager.Instance.mouseSensitivityY = sensitivitySlider.value;
-        sensitivitySlider.transform.Find("Value").GetComponent<Text>().text =
-            MainManager.Instance.mouseSensitivityX.ToString();
+        sensitivitySlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text =
+            MainManager.Instance.mouseSensitivityX.ToString(".0");
     }
 
     public void UpdateVolume()
     {
         MainManager.Instance.musicVolume = (int)volumeSlider.value;
         MainManager.Instance.sfxVolume = (int)volumeSlider.value;
-        volumeSlider.transform.Find("Value").GetComponent<Text>().text = MainManager.Instance.musicVolume.ToString();
+        volumeSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = MainManager.Instance.musicVolume.ToString();
     }
 }
