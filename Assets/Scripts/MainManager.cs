@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MainManager : MonoBehaviour
@@ -28,6 +29,7 @@ public class MainManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        LoadSettings();
     }
 
     public void NewSpellSelected(int spellIndex)
@@ -54,5 +56,17 @@ public class MainManager : MonoBehaviour
     {
         Instance.fpsTarget = target;
         Application.targetFrameRate = Instance.fpsTarget;
+    }
+
+    private void LoadSettings()
+    {
+        SetFPSCap(Convert.ToBoolean(PlayerPrefs.GetInt("FPSCap", 1)));
+        SetFPSTarget(PlayerPrefs.GetInt("FPSTarget", 60));
+        Instance.invertX = Convert.ToBoolean(PlayerPrefs.GetInt("InvertX", 0));
+        Instance.invertY = Convert.ToBoolean(PlayerPrefs.GetInt("InvertY", 0));
+        Instance.mouseSensitivityX = PlayerPrefs.GetFloat("Sensitivity", 2.0f);
+        Instance.mouseSensitivityY = PlayerPrefs.GetFloat("Sensitivity", 2.0f);
+        Instance.musicVolume = PlayerPrefs.GetInt("Volume", 100);
+        Instance.sfxVolume = PlayerPrefs.GetInt("Volume", 100);
     }
 }
