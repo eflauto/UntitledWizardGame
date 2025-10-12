@@ -19,24 +19,24 @@ public class OptionsMenu : MonoBehaviour
     
     public void UpdateFPSCap()
     {
-        MainManager.Instance.fpsCap = fpsCapToggle.isOn;
+        MainManager.Instance.SetFPSCap(fpsCapToggle.isOn);
     }
 
     private void UpdateFPSCap(bool fpsCap)
     {
-        MainManager.Instance.fpsCap = fpsCap;
+        MainManager.Instance.SetFPSCap(fpsCapToggle.isOn);
         fpsCapToggle.isOn = fpsCap;
     }
 
     public void UpdateFPS()
     {
-        MainManager.Instance.fpsTarget = (int)fpsSlider.value;
+        MainManager.Instance.SetFPSTarget((int)fpsSlider.value);
         fpsSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = MainManager.Instance.fpsTarget.ToString();
     }
 
     private void UpdateFPS(int fpsTarget)
     {
-        MainManager.Instance.fpsTarget = fpsTarget;
+        MainManager.Instance.SetFPSTarget(fpsTarget);
         fpsSlider.value = fpsTarget;
         fpsSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = MainManager.Instance.fpsTarget.ToString();
     }
@@ -94,7 +94,7 @@ public class OptionsMenu : MonoBehaviour
         volumeSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = volume.ToString();
     }
 
-    public void ReadSettings()
+    private void ReadSettings()
     {
         var fpsCap = PlayerPrefs.GetInt("FPSCap", 1);
         var fpsTarget = PlayerPrefs.GetInt("FPSTarget", 60);
