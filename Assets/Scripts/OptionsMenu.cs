@@ -24,7 +24,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateFPSCap(bool fpsCap)
     {
-        MainManager.Instance.SetFPSCap(fpsCapToggle.isOn);
         fpsCapToggle.isOn = fpsCap;
     }
 
@@ -36,7 +35,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateFPS(int fpsTarget)
     {
-        MainManager.Instance.SetFPSTarget(fpsTarget);
         fpsSlider.value = fpsTarget;
         fpsSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = MainManager.Instance.fpsTarget.ToString();
     }
@@ -48,7 +46,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateInvertX(bool invertX)
     {
-        MainManager.Instance.invertX = invertX;
         invertXToggle.isOn = invertX;
     }
 
@@ -59,7 +56,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateInvertY(bool invertY)
     {
-        MainManager.Instance.invertY = invertY;
         invertYToggle.isOn = invertY;
     }
 
@@ -73,8 +69,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateSensitivity(float sensitivity)
     {
-        MainManager.Instance.mouseSensitivityX = sensitivity;
-        MainManager.Instance.mouseSensitivityY = sensitivity;
         sensitivitySlider.value = sensitivity;
         sensitivitySlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = sensitivity.ToString(".0");
     }
@@ -88,27 +82,18 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateVolume(int volume)
     {
-        MainManager.Instance.musicVolume = volume;
-        MainManager.Instance.sfxVolume = volume;
         volumeSlider.value = MainManager.Instance.musicVolume;
         volumeSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = volume.ToString();
     }
 
     private void ReadSettings()
     {
-        var fpsCap = PlayerPrefs.GetInt("FPSCap", 1);
-        var fpsTarget = PlayerPrefs.GetInt("FPSTarget", 60);
-        var invertX = PlayerPrefs.GetInt("InvertX", 0);
-        var invertY = PlayerPrefs.GetInt("InvertY", 0);
-        var sensitivity = PlayerPrefs.GetFloat("Sensitivity", 2.0f);
-        var volume = PlayerPrefs.GetInt("Volume", 100);
-        
-        UpdateFPSCap(Convert.ToBoolean(fpsCap));
-        UpdateFPS(fpsTarget);
-        UpdateInvertX(Convert.ToBoolean(invertX));
-        UpdateInvertY(Convert.ToBoolean(invertY));
-        UpdateSensitivity(sensitivity);
-        UpdateVolume(volume);
+        UpdateFPSCap(MainManager.Instance.fpsCap);
+        UpdateFPS(MainManager.Instance.fpsTarget);
+        UpdateInvertX(MainManager.Instance.invertX);
+        UpdateInvertY(MainManager.Instance.invertY);
+        UpdateSensitivity(MainManager.Instance.mouseSensitivityX);
+        UpdateVolume(MainManager.Instance.musicVolume);
     }
 
     public void SaveSettings()
