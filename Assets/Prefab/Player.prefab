@@ -237,7 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23924d2888fcdb0498d4892c42c47460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPOVController
-  sensitivity: 5
   player: {fileID: 1473744639550604877}
 --- !u!1 &6320459268932487720
 GameObject:
@@ -381,6 +380,7 @@ GameObject:
   - component: {fileID: 6359502160016434798}
   - component: {fileID: 5742541477427232712}
   - component: {fileID: 1821787282385852379}
+  - component: {fileID: 472574747158707629}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -490,6 +490,22 @@ MonoBehaviour:
   vulnerabilityCooldown: 1.5
   resultText: {fileID: 0}
   healthText: {fileID: 0}
+--- !u!208 &472574747158707629
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6463288031027612650}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.47, y: 1, z: 0.47}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2335326623520169703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -552,20 +568,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
       propertyPath: attacks.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
       propertyPath: 'attacks.Array.data[0]'
       value: Base Attack
       objectReference: {fileID: 0}
     - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
+      propertyPath: 'attacks.Array.data[1]'
+      value: Rock Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
+      propertyPath: 'attacks.Array.data[2]'
+      value: Wind Gust
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
+      propertyPath: 'attacks.Array.data[3]'
+      value: Fire Breath
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
       propertyPath: attackObjects.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
       propertyPath: 'attackObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 5804332473821784122, guid: ec29354107128374294f9781d4a0869c, type: 3}
+    - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
+      propertyPath: 'attackObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1759075042098288174, guid: 31f39f5a6e930bd439bd41c7406b2c4c, type: 3}
+    - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
+      propertyPath: 'attackObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4601731883540878242, guid: 8fbde40fb464c9746a681eb23a45df78, type: 3}
+    - target: {fileID: 6203969422673139455, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
+      propertyPath: 'attackObjects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 14117556874503128, guid: 24587568de1dc3641b9056f40d4c9f03, type: 3}
     - target: {fileID: 6578991979034984418, guid: d9d9d1cc7cba3034daf074139f128d50, type: 3}
       propertyPath: m_Layer
       value: 6
