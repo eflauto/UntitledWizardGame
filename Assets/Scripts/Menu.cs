@@ -18,4 +18,10 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ReturnToMainMenu()
+    {
+        Resume();
+        SceneManager.LoadScene(0);
+    }
 }
