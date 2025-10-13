@@ -23,7 +23,7 @@ public class FirstPOVController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (MainManager.Instance.paused) return;
 
         // mouse movement moves camera 
         float horizontal = Input.GetAxisRaw("Mouse X") * MainManager.Instance.mouseSensitivityX;

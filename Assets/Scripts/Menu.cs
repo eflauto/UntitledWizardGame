@@ -8,6 +8,12 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void Resume()
+    {
+        gameObject.SetActive(false);
+        MainManager.Instance.UnpauseGame();
+    }
+
     public void Quit()
     {
         Application.Quit();

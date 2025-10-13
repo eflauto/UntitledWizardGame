@@ -18,6 +18,8 @@ public class WandController : MonoBehaviour
 
     private void Update()
     {
+        if (MainManager.Instance.paused) return;
+        
         if (Input.GetButtonDown("Fire1"))
         {
             switch (MainManager.Instance.selectedSpell)

@@ -20,11 +20,17 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            MainManager.Instance.PauseGame();
+        }
+        
         float appliedSpeed = speed;
         // basic movement using .move()
         // grabs input from the user

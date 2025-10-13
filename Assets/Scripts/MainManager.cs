@@ -19,6 +19,8 @@ public class MainManager : MonoBehaviour
     public bool invertX =  false;
     public bool invertY = false;
 
+    [HideInInspector] public bool paused = false;
+
     private void Awake()
     {
         if (Instance != null)
@@ -68,5 +70,20 @@ public class MainManager : MonoBehaviour
         Instance.mouseSensitivityY = PlayerPrefs.GetFloat("Sensitivity", 2.0f);
         Instance.musicVolume = PlayerPrefs.GetInt("Volume", 100);
         Instance.sfxVolume = PlayerPrefs.GetInt("Volume", 100);
+    }
+
+    public void PauseGame()
+    {
+        GameObject.Find("Canvas").transform.Find("PauseMenu").gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        Instance.paused = true;
+    }
+
+    public void UnpauseGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
+        Instance.paused = false;
     }
 }
