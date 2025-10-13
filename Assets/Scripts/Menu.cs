@@ -5,6 +5,7 @@ public class Menu : MonoBehaviour
 {
     public void Play()
     {
+        MainManager.Instance.UnpauseGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

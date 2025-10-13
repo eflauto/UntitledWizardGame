@@ -42,7 +42,7 @@ public class HealthSystem : MonoBehaviour
     {
         var collisionObject = collision.gameObject;
         
-        if (!collisionObject.CompareTag("Enemy") || _vulnerabilityCooldownTimer > 0f) return;
+        if (!collisionObject.CompareTag("Enemy") || !collisionObject.CompareTag("Boss") || _vulnerabilityCooldownTimer > 0f) return;
         
         playerHealth -= collisionObject.GetComponent<EnemyManager>().attackPower;
         Debug.Log(playerHealth);

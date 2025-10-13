@@ -12,22 +12,22 @@ public class EnemyManager : MonoBehaviour
     public float health = 20f;
     public float attackPower = 5f;
     
-    private bool _isDead = false;
+    protected bool isDead = false;
     
-    private void Start()
+    protected void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
         _rigidbody = GetComponent<Rigidbody>();
     }
     
-    private void Update()
+    protected void Update()
     {
-        if (_isDead) return;
+        if (isDead) return;
 
         if (health <= 0f)
         {
-            _isDead = true;
+            isDead = true;
             return;
         }
         
