@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 995376832013208363}
   m_Layer: 0
   m_Name: WindGustAttack
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66b3159ed9366741a79e1014aa6fb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 0
   windCapsuleObject: {fileID: 9091656060458616249, guid: 7f074d8528b24cc4f9bb3a53f58eb428, type: 3}
   windDistance: 4
   windRadius: 0.5

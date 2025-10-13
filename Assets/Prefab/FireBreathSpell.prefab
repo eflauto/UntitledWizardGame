@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3108852343856594211}
   m_Layer: 0
   m_Name: FireBreathSpell
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a1972331244274d9d6d9759a7fccd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 100
   fireBreathObject: {fileID: 14117556874503128}
   fireDistance: 2
   layerMask:
