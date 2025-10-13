@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Attack
   - RockAttack
+  - Boss
   layers:
   - Default
   - TransparentFX
