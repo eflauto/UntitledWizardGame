@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -37,22 +38,11 @@ public class HealthSystem : MonoBehaviour
 
     private void HandleCollision(Collision collision)
     {
-        GameObject parentGameObject;
+        var collisionObject = collision.gameObject;
         
-        try
-        {
-            // Try to get the parent, which is where the Enemy tag would be.
-            parentGameObject = collision.transform.parent.gameObject;
-        }
-        catch
-        {
-            // If there is no parent, it can't be an enemy.
-            return;
-        }
-
-        if (!parentGameObject.CompareTag("Enemy") || _vulnerabilityCooldownTimer > 0f) return;
+        if (!collisionObject.CompareTag("Enemy") || _vulnerabilityCooldownTimer > 0f) return;
         
-        playerHealth -= parentGameObject.GetComponent<EnemyManager>().attackPower;
+        playerHealth -= collisionObject.GetComponent<EnemyManager>().attackPower;
         Debug.Log(playerHealth);
         _vulnerabilityCooldownTimer = vulnerabilityCooldown;
         StartCoroutine(VulnerabilityCooldownCountdownCoroutine());
