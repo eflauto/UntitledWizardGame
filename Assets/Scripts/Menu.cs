@@ -10,8 +10,8 @@ public class Menu : MonoBehaviour
 
     public void Resume()
     {
-        gameObject.SetActive(false);
         MainManager.Instance.UnpauseGame();
+        gameObject.SetActive(false);
     }
 
     public void Quit()
@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Resume();
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
     }
 }

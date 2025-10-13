@@ -13,13 +13,15 @@ public class HealthSystem : MonoBehaviour
 
     public TextMeshProUGUI resultText;
     public TextMeshProUGUI healthText;
+
+    private GameObject _resultsScreen;
     
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _resultsScreen = GameObject.Find("Canvas").transform.Find("ResultsScreen").gameObject;
         
         SetHealthText();
-        if (resultText is not null) resultText.enabled = false;
     }
 
     private void Update()
@@ -62,7 +64,8 @@ public class HealthSystem : MonoBehaviour
         if (resultText is null) return;
         
         resultText.text = "You died!";
-        resultText.enabled = true;
+        resultText.colorGradient = new VertexGradient(Color.red, Color.red, new Color(0.15f, 0f, 0f), new Color(0.15f, 0f, 0f));
+        MainManager.Instance.PauseGame(_resultsScreen);
     }
 
     private IEnumerator VulnerabilityCooldownCountdownCoroutine()

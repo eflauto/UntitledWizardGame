@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.81f; //normal gravity value for jumping
     private float playerVelocity; //vertical velocity for jumping
 
+    private GameObject _pauseMenu;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+        _pauseMenu = GameObject.Find("Canvas").transform.Find("PauseMenu").gameObject;
     }
 
     // Update is called once per frame
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            MainManager.Instance.PauseGame();
+            MainManager.Instance.PauseGame(_pauseMenu);
         }
         
         float appliedSpeed = speed;

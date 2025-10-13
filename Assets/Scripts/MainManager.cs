@@ -1,5 +1,7 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
@@ -72,14 +74,16 @@ public class MainManager : MonoBehaviour
         Instance.sfxVolume = PlayerPrefs.GetInt("Volume", 100);
     }
 
-    public void PauseGame()
+    public void PauseGame(GameObject menu)
     {
-        GameObject.Find("Canvas").transform.Find("PauseMenu").gameObject.SetActive(true);
+        if (paused) return;
+        
+        menu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
         Instance.paused = true;
     }
-
+    
     public void UnpauseGame()
     {
         Cursor.lockState = CursorLockMode.Locked;

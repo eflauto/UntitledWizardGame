@@ -246,12 +246,12 @@ GameObject:
   - component: {fileID: 304839318}
   - component: {fileID: 304839317}
   m_Layer: 5
-  m_Name: Result Object
+  m_Name: ResultsScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &304839315
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2059,6 +2059,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1821787282385852379, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: resultText
+      value: 
+      objectReference: {fileID: 1908785831}
     - target: {fileID: 6463288031027612650, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_Name
       value: Player
