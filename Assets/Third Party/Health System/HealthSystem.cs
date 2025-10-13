@@ -59,11 +59,10 @@ public class HealthSystem : MonoBehaviour
 
     private void SetResultText()
     {
-        if (resultText is not null)
-        {
-            resultText.text = "You died!";
-            resultText.enabled = true;
-        }
+        if (resultText is null) return;
+        
+        resultText.text = "You died!";
+        resultText.enabled = true;
     }
 
     private IEnumerator VulnerabilityCooldownCountdownCoroutine()
