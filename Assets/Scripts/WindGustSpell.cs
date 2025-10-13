@@ -3,7 +3,7 @@ using UnityEngine;
 /*
 
 */
-public class WindGustSpell : MonoBehaviour
+public class WindGustSpell : Attack
 {
     public GameObject windCapsuleObject;
     public float windDistance = 4.0f;
@@ -11,6 +11,11 @@ public class WindGustSpell : MonoBehaviour
     public float windForce = 100;
     public LayerMask layerMask;
 
+    public WindGustSpell()
+    {
+        attackPower = 0;
+    }
+    
     public void WindGust(Transform callerTransform)
     {
         var instance = Instantiate(windCapsuleObject, callerTransform.position, callerTransform.rotation);

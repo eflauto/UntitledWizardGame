@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class FireBreathSpell : MonoBehaviour
+public class FireBreathSpell : Attack
 {
     public GameObject fireBreathObject;
     public float fireDistance = 2.0f;
-    //public float fireDamage = 100;
     public LayerMask layerMask;
 
+    public FireBreathSpell()
+    {
+        attackPower = 100f;
+    }
+    
     public void FireBreath(Transform callerTransform)
     {
         var instance = Instantiate(fireBreathObject, callerTransform.position, callerTransform.rotation);

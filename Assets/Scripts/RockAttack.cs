@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public class RockAttack : MonoBehaviour
+public class RockAttack : Attack
 {
     public Rigidbody rockObject;
     public float power = 1500f;
     public float moveSpeed = 2f;
 
+    public RockAttack()
+    {
+        attackPower = 5f;
+    }
 
     // A method that takes the caller's transform data, instantiates a rock object that flies forward
     public void RockAttackSpell(Transform callerTransform)

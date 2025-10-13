@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Attack")) return;
 
-        var attackObjectScript = collision.gameObject.GetComponent<AttackObject>();
+        var attackObjectScript = collision.gameObject.GetComponent<Attack>();
         var damage = attackObjectScript.attackPower;
         
         TakeDamage(damage);

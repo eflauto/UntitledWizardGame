@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class AttackObject : MonoBehaviour
+public class AttackObject : Attack
 {
-    public float attackPower = 10f;
-    
     public float objectForce = 1000f;
+    
+    public AttackObject()
+    {
+        attackPower = 10f;
+    }
 
     private void OnCollisionEnter(Collision other)
     {
