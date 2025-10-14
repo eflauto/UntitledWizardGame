@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,8 @@ public class EnemyManager : MonoBehaviour
 
     public float health = 20f;
     public float attackPower = 5f;
+
+    public float scaleDuration = 2f;
     
     protected bool isDead = false;
     
@@ -28,6 +31,8 @@ public class EnemyManager : MonoBehaviour
         if (health <= 0f)
         {
             isDead = true;
+            _agent.isStopped = true;
+            StartCoroutine(ScaleToZeroCoroutine());
             return;
         }
         
@@ -47,5 +52,22 @@ public class EnemyManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+    }
+    
+    private IEnumerator ScaleToZeroCoroutine()
+    {
+        var timer = 0f;
+        var initialScale = transform.localScale;
+        var targetScale = Vector3.zero;
+
+        while (timer < scaleDuration)
+        {
+            transform.localScale = Vector3.Lerp(initialScale, targetScale, timer / scaleDuration);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
+        transform.localScale = targetScale;
+        Destroy(gameObject);
     }
 }

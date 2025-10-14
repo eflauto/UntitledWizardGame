@@ -27,8 +27,5 @@ public class WindGustSpell : Attack
         {
             rayHit.transform.GetComponent<Rigidbody>().AddForce(fwd.normalized * windForce, ForceMode.Impulse);
         }
-        
-        //Destroy(instance, 2.0f); TODO: get self-destruction working
-        
     }
 }
