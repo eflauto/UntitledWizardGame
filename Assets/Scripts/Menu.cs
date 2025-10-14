@@ -6,6 +6,7 @@ public class Menu : MonoBehaviour
     public void Play()
     {
         MainManager.Instance.UnpauseGame();
+        MainManager.Instance.health = MainManager.Instance.maxHealth;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
