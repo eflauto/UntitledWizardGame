@@ -19,7 +19,7 @@ public class HealthSystem : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _resultsScreen = GameObject.Find("Canvas").transform.Find("ResultsScreen").gameObject;
+        _resultsScreen = GameObject.Find("UI").transform.Find("ResultsScreen").gameObject;
         
         SetHealthText();
     }

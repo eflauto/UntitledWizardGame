@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         playerController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        _pauseMenu = GameObject.Find("Canvas").transform.Find("PauseMenu").gameObject;
+        _pauseMenu = GameObject.Find("UI").transform.Find("PauseMenu").gameObject;
     }
 
     // Update is called once per frame

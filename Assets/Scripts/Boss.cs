@@ -15,7 +15,7 @@ public class Boss : EnemyManager
     {
         base.Start();
         
-        _resultsScreen = GameObject.Find("Canvas").transform.Find("ResultsScreen").gameObject;
+        _resultsScreen = GameObject.Find("UI").transform.Find("ResultsScreen").gameObject;
     }
     
     private new void Update()

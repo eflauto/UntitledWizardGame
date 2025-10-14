@@ -773,7 +773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1177607590874388896, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 8533103478886475138, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
       propertyPath: m_Pivot.x
@@ -854,6 +854,10 @@ PrefabInstance:
     - target: {fileID: 8533103478886475138, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631496480856287505, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
