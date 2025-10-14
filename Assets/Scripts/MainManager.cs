@@ -8,7 +8,8 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
 
     [Header("Gameplay Variables")] 
-    public int health = 30;
+    public float maxHealth = 30f;
+    public float health = 30f;
     public int selectedSpell = 0;
 
     [Header("Settings")] 

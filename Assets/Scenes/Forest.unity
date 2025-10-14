@@ -133,11 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8221353096764453497, guid: ef82aa0ca30770645ada00a290d31977, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3016775
+      value: 21.01
       objectReference: {fileID: 0}
     - target: {fileID: 8221353096764453497, guid: ef82aa0ca30770645ada00a290d31977, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46.71
+      value: 47.22
       objectReference: {fileID: 0}
     - target: {fileID: 8221353096764453497, guid: ef82aa0ca30770645ada00a290d31977, type: 3}
       propertyPath: m_LocalPosition.z
@@ -297,6 +297,17 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &441632286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5500589077282663955, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
+  m_PrefabInstance: {fileID: 4840796453398169029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edabc2ed0c24f6f49946498fd6546c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &664465533
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +786,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7875875702491591605, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875875702491591605, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8533103478886475138, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -855,10 +874,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8631496480856287505, guid: 8e6cccf2db889a143a09e76e78ebc06f, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -912,6 +927,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1821787282385852379, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 441632286}
     - target: {fileID: 1821787282385852379, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: resultText
       value: 

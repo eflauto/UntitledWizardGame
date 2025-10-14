@@ -7,12 +7,11 @@ public class HealthSystem : MonoBehaviour
 {
     private Rigidbody _rb;
     
-    public float playerHealth = 30f;
     public float vulnerabilityCooldown = 1.5f;
-    private float _vulnerabilityCooldownTimer;
+    private float _vulnerabilityCooldownTimer = 0f;
 
     public TextMeshProUGUI resultText;
-    public TextMeshProUGUI healthText;
+    public HealthBar healthBar;
 
     private GameObject _resultsScreen;
     
@@ -21,12 +20,12 @@ public class HealthSystem : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _resultsScreen = GameObject.Find("UI").transform.Find("ResultsScreen").gameObject;
         
-        SetHealthText();
+        healthBar.SetMaxHealth(MainManager.Instance.maxHealth);
     }
 
     private void Update()
     {
-        if (playerHealth <= 0f)
+        if (MainManager.Instance.health <= 0f)
         {
             SetResultText();
             // Destroy the script. Can be expanded later to a death animation or something.
@@ -42,21 +41,18 @@ public class HealthSystem : MonoBehaviour
     {
         var collisionObject = collision.gameObject;
         
-        if (!collisionObject.CompareTag("Enemy") || !collisionObject.CompareTag("Boss") || _vulnerabilityCooldownTimer > 0f) return;
+        if ((!collisionObject.CompareTag("Enemy") && !collisionObject.CompareTag("Boss")) || _vulnerabilityCooldownTimer > 0f) return;
         
-        playerHealth -= collisionObject.GetComponent<EnemyManager>().attackPower;
-        Debug.Log(playerHealth);
+        TakeDamage(collisionObject.GetComponent<EnemyManager>().attackPower);
         _vulnerabilityCooldownTimer = vulnerabilityCooldown;
         StartCoroutine(VulnerabilityCooldownCountdownCoroutine());
-        SetHealthText();
     }
-    
-    private void SetHealthText()
+
+
+    private void TakeDamage(float damage)
     {
-        if (healthText is null) return;
-        
-        // Cast the playerHealth to an int to get a clean output.
-        healthText.text = "Health: " + (int)playerHealth;
+        MainManager.Instance.health -= damage;
+        healthBar.SetHealth(MainManager.Instance.health);
     }
 
     private void SetResultText()
