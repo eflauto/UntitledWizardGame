@@ -21,6 +21,7 @@ public class HealthSystem : MonoBehaviour
         _resultsScreen = GameObject.Find("UI").transform.Find("ResultsScreen").gameObject;
         
         healthBar.SetMaxHealth(MainManager.Instance.maxHealth);
+        healthBar.SetHealth(MainManager.Instance.health);
     }
 
     private void Update()
