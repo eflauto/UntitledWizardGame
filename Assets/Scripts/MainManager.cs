@@ -25,6 +25,9 @@ public class MainManager : MonoBehaviour
     public bool invertY = false;
 
     [HideInInspector] public bool paused = false;
+    [Header("Debug")] 
+    public bool debugEnabled = false;
+    public int debugSprintSpeed = 20;
 
     private void Awake()
     {

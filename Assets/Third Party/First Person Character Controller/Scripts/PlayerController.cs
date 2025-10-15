@@ -50,7 +50,19 @@ public class PlayerController : MonoBehaviour
         // Checks if the player is holding the sprint key and, if so, changes the applied speed to our sprint speed
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            appliedSpeed = sprintSpeed;
+            if (MainManager.Instance.debugEnabled)
+            {
+                appliedSpeed = MainManager.Instance.debugSprintSpeed;
+            }
+            else
+            {
+                appliedSpeed = sprintSpeed;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            MainManager.Instance.debugEnabled = !MainManager.Instance.debugEnabled;
         }
         
         float h = Input.GetAxisRaw("Horizontal"); 
@@ -59,7 +71,7 @@ public class PlayerController : MonoBehaviour
         move *= appliedSpeed; //multiplying the move vector by the player speed/sprint speed
         move = AdjustVelocityToSlope(move);
         
-        if (Input.GetButtonDown("Jump") && playerController.isGrounded)
+        if (Input.GetButtonDown("Jump") && (playerController.isGrounded || MainManager.Instance.debugEnabled))
         {
             playerVelocity += Mathf.Sqrt(jumpHeight * -2.0f * gravity); // physics formula for jumping
         }
