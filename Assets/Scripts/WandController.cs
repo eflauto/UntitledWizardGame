@@ -22,7 +22,12 @@ public class WandController : MonoBehaviour
         
         if (Input.GetButtonDown("Fire1"))
         {
-            switch (MainManager.Instance.selectedSpell)
+            int activatedSpellIndex = MainManager.Instance.selectedSpell;
+            if (activatedSpellIndex > MainManager.Instance.unlockedSpellsCount)
+            {
+                activatedSpellIndex = -1;
+            }
+            switch (activatedSpellIndex)
             {
                 case 0:
                     // Somehow, this is faster than the direct string lookup.
@@ -42,7 +47,7 @@ public class WandController : MonoBehaviour
                     FireBreath();
                     break;
                 default:
-                    Debug.LogError("Tried to use an invalid attack!");
+                    Debug.LogError("Tried to use an invalid/locked attack!");
                     break;
             }
         }

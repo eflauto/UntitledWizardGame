@@ -11,6 +11,8 @@ public class MainManager : MonoBehaviour
     public float maxHealth = 30f;
     public float health = 30f;
     public int selectedSpell = 0;
+    // unlockedSpellsCount controls the available spell list for the player
+    public int unlockedSpellsCount = 0;
 
     [Header("Settings")] 
     public bool fpsCap = true;
