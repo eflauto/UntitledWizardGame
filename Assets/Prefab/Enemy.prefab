@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 855909475575064075}
   - component: {fileID: 4823007790935060071}
   - component: {fileID: 3010833209317306272}
+  - component: {fileID: 8687560127479811394}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -208,3 +209,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   attackPower: 5
+  scaleDuration: 2
+--- !u!114 &8687560127479811394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849183831721928853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f0bae54f6eadf4fbbe9cf89a991c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - spider_crawl
+  - impact
+  audioClips:
+  - {fileID: 8300000, guid: 84971bf92e9506044b807fcbeb58d250, type: 3}
+  - {fileID: 8300000, guid: 8f546a203fa299b42b75b4cc8a9840e3, type: 3}
