@@ -3,3 +3,16 @@ Credits:
 Code:
 Aimee Prentice - First Person Character Controller
 Ender Whittington - Health System
+
+SFX:
+Makoto-AE - Wind Gust
+u_hm3ohsiik6 - Blow Air
+NeoSpica - Impact & Rock Smash
+pcaeldries - Burning
+HumanPaperclip - Spider Crawling
+qubodup - Slime Jump
+davidou - Slime Spit
+
+Music:
+Serge Chetvertnykh - Menu Music
+HitCtrl - Forest Music
