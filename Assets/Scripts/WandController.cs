@@ -10,23 +10,43 @@ public class WandController : MonoBehaviour
 
     private Camera _playerCamera;
 
+    public ManaBar manaBar;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        
+        manaBar.SetMaxMana(MainManager.Instance.maxMana);
+        manaBar.SetMana(MainManager.Instance.mana);
     }
 
     private void Update()
     {
         if (MainManager.Instance.paused) return;
-        
-        if (Input.GetButtonDown("Fire1"))
+
+        if (MainManager.Instance.mana > MainManager.Instance.maxMana)
         {
-            int activatedSpellIndex = MainManager.Instance.selectedSpell;
+            MainManager.Instance.mana = MainManager.Instance.maxMana;
+            manaBar.SetMana(MainManager.Instance.mana);
+        } 
+        else if (MainManager.Instance.mana < MainManager.Instance.maxMana)
+        {
+            MainManager.Instance.mana += MainManager.Instance.manaRegen * Time.deltaTime;
+            manaBar.SetMana(MainManager.Instance.mana);
+        }
+        
+        var currentAnimatorClip = _animator.GetCurrentAnimatorClipInfo(0)[0].clip;
+        
+        if (Input.GetButtonDown("Fire1") && currentAnimatorClip.name == "Idle")
+        {
+            var activatedSpellIndex = MainManager.Instance.selectedSpell;
+            
             if (activatedSpellIndex > MainManager.Instance.unlockedSpellsCount)
             {
                 activatedSpellIndex = -1;
             }
+            
             switch (activatedSpellIndex)
             {
                 case 0:
@@ -57,11 +77,18 @@ public class WandController : MonoBehaviour
 
     private void BasicAttack()
     {
-        var forward = _playerCamera.transform.TransformDirection(Vector3.forward);
         var attackObject = attackObjects[MainManager.Instance.selectedSpell];
+        var attackObjectComponent = attackObject.GetComponent<AttackObject>();
+        
+        if (attackObjectComponent.manaCost > MainManager.Instance.mana) return;
+        
+        MainManager.Instance.mana -= attackObjectComponent.manaCost;
+        manaBar.SetMana(MainManager.Instance.mana);
+        
+        var forward = _playerCamera.transform.TransformDirection(Vector3.forward);
         var attackObjectPosition = forward * 1.5f + transform.position;
         var attackObjectInstance = Instantiate(attackObject, attackObjectPosition, transform.rotation);
-        var attackObjectForce = attackObjectInstance.GetComponent<AttackObject>().objectForce;
+        var attackObjectForce = attackObjectComponent.objectForce;
 
         attackObjectInstance.GetComponent<Rigidbody>().AddForce(forward * attackObjectForce, ForceMode.Impulse);
     }
@@ -71,6 +98,13 @@ public class WandController : MonoBehaviour
     {
         //Debug.Log("Rock attack!");
         var rockObjectSpell = attackObjects[MainManager.Instance.selectedSpell];
+        var rockAttack = rockObjectSpell.GetComponent<RockAttack>();
+        
+        if (rockAttack.manaCost > MainManager.Instance.mana) return;
+        
+        MainManager.Instance.mana -= rockAttack.manaCost;
+        manaBar.SetMana(MainManager.Instance.mana);
+        
         rockObjectSpell.GetComponent<RockAttack>().RockAttackSpell(_playerCamera.transform);
 
     }
@@ -78,14 +112,28 @@ public class WandController : MonoBehaviour
     {
         //Debug.Log("Wind gust!");
         var spellObject = attackObjects[MainManager.Instance.selectedSpell];
-        spellObject.GetComponent<WindGustSpell>().WindGust(_playerCamera.transform);
+        var spellAttack = spellObject.GetComponent<WindGustSpell>();
+        
+        if (spellAttack.manaCost > MainManager.Instance.mana) return;
+        
+        MainManager.Instance.mana -= spellAttack.manaCost;
+        manaBar.SetMana(MainManager.Instance.mana);
+        
+        spellAttack.WindGust(_playerCamera.transform);
 
     }
     private void FireBreath()
     {
         //Debug.Log("Fire Breath!");
         var spellObject = attackObjects[MainManager.Instance.selectedSpell];
-        spellObject.GetComponent<FireBreathSpell>().FireBreath(_playerCamera.transform);
+        var spellAttack = spellObject.GetComponent<FireBreathSpell>();
+        
+        if (spellAttack.manaCost > MainManager.Instance.mana) return;
+
+        MainManager.Instance.mana -= spellAttack.manaCost;
+        manaBar.SetMana(MainManager.Instance.mana);
+        
+        spellAttack.FireBreath(_playerCamera.transform);
 
     }
 
