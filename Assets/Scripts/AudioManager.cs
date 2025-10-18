@@ -5,7 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     public string[] audioTags;
     public AudioClip[] audioClips;
-    private Dictionary<string, AudioClip> _audioDictionary;
+    private Dictionary<string, AudioClip> _audioDictionary = new Dictionary<string, AudioClip>();
     
     private AudioSource _audioSource;
     
