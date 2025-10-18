@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 0
+  manaCost: 20
   windCapsuleObject: {fileID: 9091656060458616249, guid: 7f074d8528b24cc4f9bb3a53f58eb428, type: 3}
   windDistance: 4
   windRadius: 0.5

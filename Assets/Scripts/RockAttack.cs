@@ -11,6 +11,7 @@ public class RockAttack : Attack
     public RockAttack()
     {
         attackPower = 5f;
+        manaCost = 10f;
     }
 
     public void Start()

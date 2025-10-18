@@ -10010,7 +10010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525151f505e4e5e4bb61aa015f131f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 10
+  attackPower: 3
+  manaCost: 25
   objectForce: 20
   explodeParticles: {fileID: 5960740179748739829, guid: c313d7c2382c08b498382064b02b7099, type: 3}
   particleColor: {r: 0.31, g: 0, b: 0.48, a: 1}

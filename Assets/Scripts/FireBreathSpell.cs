@@ -9,6 +9,7 @@ public class FireBreathSpell : Attack
     public FireBreathSpell()
     {
         attackPower = 100f;
+        manaCost = 40f;
     }
     
     public void FireBreath(Transform callerTransform)

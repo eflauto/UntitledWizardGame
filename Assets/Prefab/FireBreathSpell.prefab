@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 100
+  manaCost: 40
   fireBreathObject: {fileID: 14117556874503128}
   fireDistance: 2
   layerMask:

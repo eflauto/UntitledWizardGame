@@ -15,7 +15,8 @@ public class AttackObject : Attack
     
     public AttackObject()
     {
-        attackPower = 10f;
+        attackPower = 3f;
+        manaCost = 25f;
     }
 
     private void Start()

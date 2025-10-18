@@ -14,6 +14,7 @@ public class WindGustSpell : Attack
     public WindGustSpell()
     {
         attackPower = 0;
+        manaCost = 20f;
     }
     
     public void WindGust(Transform callerTransform)
