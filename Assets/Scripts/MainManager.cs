@@ -10,6 +10,9 @@ public class MainManager : MonoBehaviour
     [Header("Gameplay Variables")] 
     public float maxHealth = 30f;
     public float health = 30f;
+    public float maxMana = 50f;
+    public float mana = 50f;
+    public float manaRegen = 5f;
     public int selectedSpell = 0;
     // unlockedSpellsCount controls the available spell list for the player
     public int unlockedSpellsCount = 0;

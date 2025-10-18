@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
     {
         MainManager.Instance.UnpauseGame();
         MainManager.Instance.health = MainManager.Instance.maxHealth;
+        MainManager.Instance.mana = MainManager.Instance.maxMana;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
