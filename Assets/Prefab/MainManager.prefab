@@ -44,8 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3355a6464542b174ab53195f699eefbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 30
   health: 30
+  maxMana: 50
+  mana: 50
+  manaRegen: 8
   selectedSpell: 0
+  unlockedSpellsCount: 0
   fpsCap: 1
   fpsTarget: 60
   musicVolume: 100
@@ -55,3 +60,5 @@ MonoBehaviour:
   invertX: 0
   invertY: 0
   paused: 0
+  debugEnabled: 0
+  debugSprintSpeed: 20

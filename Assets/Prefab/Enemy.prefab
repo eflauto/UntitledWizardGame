@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4823007790935060071}
   - component: {fileID: 3010833209317306272}
   - component: {fileID: 8687560127479811394}
+  - component: {fileID: 5298747292550382082}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -228,3 +229,24 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 84971bf92e9506044b807fcbeb58d250, type: 3}
   - {fileID: 8300000, guid: 8f546a203fa299b42b75b4cc8a9840e3, type: 3}
+--- !u!135 &5298747292550382082
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849183831721928853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}

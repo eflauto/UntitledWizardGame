@@ -14,7 +14,8 @@ public class EnemyManager : MonoBehaviour
     public float attackPower = 5f;
 
     public float scaleDuration = 2f;
-    
+
+    protected bool isAggro = false;
     protected bool isDead = false;
     
     protected void Start()
@@ -35,8 +36,11 @@ public class EnemyManager : MonoBehaviour
             StartCoroutine(ScaleToZeroCoroutine());
             return;
         }
-        
-        _agent.SetDestination(_player.position);
+
+        if (isAggro)
+        {
+            _agent.SetDestination(_player.position);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -46,7 +50,35 @@ public class EnemyManager : MonoBehaviour
         var attackObjectScript = collision.gameObject.GetComponent<Attack>();
         var damage = attackObjectScript.attackPower;
         
+        if (!isAggro) { isAggro = true; }
+        
         TakeDamage(damage);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        HandleTrigger(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        HandleTrigger(other);
+    }
+
+    private void HandleTrigger(Collider other)
+    {
+        if (isAggro) return;
+
+        if (!other.gameObject.CompareTag("Player")) return;
+        
+        Physics.Raycast(transform.position, other.transform.position - transform.position, out var hit);
+        
+        Debug.Log(hit.collider.name);
+        
+        if (hit.collider.gameObject.CompareTag("Player"))
+        {
+            isAggro = true;
+        }
     }
     
     public void TakeDamage(float damage)
