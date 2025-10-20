@@ -21,8 +21,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(string audioTag)
     {
-        _audioSource.volume = MainManager.Instance.sfxVolume;
-        _audioSource.clip = _audioDictionary[audioTag];
-        _audioSource.Play();
+        _audioSource.volume = MainManager.Instance.sfxVolume / 100f;
+        _audioSource.PlayOneShot(_audioDictionary[audioTag]);
+    }
+
+    public void PlaySound(string audioTag, Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(_audioDictionary[audioTag], position, MainManager.Instance.sfxVolume / 100f);
     }
 }
