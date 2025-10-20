@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         playerController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         _pauseMenu = GameObject.Find("UI").transform.Find("PauseMenu").gameObject;
+        transform.position = MainManager.Instance.waypoints[MainManager.Instance.currentWaypoint];
     }
 
     // Update is called once per frame

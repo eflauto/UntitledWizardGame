@@ -51,6 +51,7 @@ MonoBehaviour:
   manaRegen: 8
   selectedSpell: 0
   unlockedSpellsCount: 0
+  currentWaypoint: ForestSpawn
   fpsCap: 1
   fpsTarget: 60
   musicVolume: 100
@@ -60,5 +61,15 @@ MonoBehaviour:
   invertX: 0
   invertY: 0
   paused: 0
+  waypointNames:
+  - ForestSpawn
+  - ForestPortal
+  - TowerSpawn
+  - TowerPortal
+  waypointVectors:
+  - {x: 0, y: 40.5, z: 0}
+  - {x: 116.3, y: 53.4, z: 115.1}
+  - {x: 252.5, y: 1.8, z: 185.9}
+  - {x: 253.9, y: 33.5, z: 250}
   debugEnabled: 0
   debugSprintSpeed: 20

@@ -1,7 +1,6 @@
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class MainManager : MonoBehaviour
 {
@@ -16,6 +15,7 @@ public class MainManager : MonoBehaviour
     public int selectedSpell = 0;
     // unlockedSpellsCount controls the available spell list for the player
     public int unlockedSpellsCount = 0;
+    public string currentWaypoint = "ForestSpawn";
 
     [Header("Settings")] 
     public bool fpsCap = true;
@@ -28,6 +28,11 @@ public class MainManager : MonoBehaviour
     public bool invertY = false;
 
     [HideInInspector] public bool paused = false;
+
+    [Header("Waypoints")] 
+    public string[] waypointNames;
+    public Vector3[] waypointVectors;
+    public Dictionary<string, Vector3> waypoints = new();
     
     [Header("Debug")] 
     public bool debugEnabled = false;
@@ -44,6 +49,7 @@ public class MainManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         LoadSettings();
+        BuildWaypoints();
     }
 
     public void NewSpellSelected(int spellIndex)
@@ -99,5 +105,18 @@ public class MainManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         Instance.paused = false;
+    }
+
+    private void BuildWaypoints()
+    {
+        for (var i = 0; i < waypointNames.Length; i++)
+        {
+            waypoints.Add(waypointNames[i], waypointVectors[i]);
+        }
+    }
+
+    public void SetWaypoint(string waypointName)
+    {
+        currentWaypoint = waypointName;
     }
 }

@@ -193,6 +193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1150438276635536583, guid: c7922f6b11b99754a8a5359b256ca6d5, type: 3}
+      propertyPath: destinationPosition
+      value: ForestPortal
+      objectReference: {fileID: 0}
     - target: {fileID: 1267895416838059871, guid: c7922f6b11b99754a8a5359b256ca6d5, type: 3}
       propertyPath: m_Name
       value: Portal_Prefab (1)
@@ -413,6 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worthyFadeTime: 3
+  winTime: 2
 --- !u!1001 &1433231695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -500,31 +505,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 245.46
+      value: 252.47
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 250.08
+      value: 185.83
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.70710576
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071079
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -532,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1473744639550604877, guid: 1ccba70ebeeb5b24dbe453278d8f3b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1231,6 +1236,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1150438276635536583, guid: c7922f6b11b99754a8a5359b256ca6d5, type: 3}
+      propertyPath: destinationPosition
+      value: ForestSpawn
+      objectReference: {fileID: 0}
     - target: {fileID: 1267895416838059871, guid: c7922f6b11b99754a8a5359b256ca6d5, type: 3}
       propertyPath: m_Name
       value: Portal_Prefab

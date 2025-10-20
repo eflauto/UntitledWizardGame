@@ -24,7 +24,7 @@ public class ChangeScenes : MonoBehaviour
     [Tooltip("The string name of the destination Scene.")]
     public string DestinationSceneString = null;
 
-    public Vector3 DestinationPosition = Vector3.zero;
+    public string destinationPosition;
 
     [Tooltip("Enabling the tag filter requires a colliding entity to have a tag that matches the tag written in the 'Colliding Tag' variable.")]
     public bool EnableTagFilter = false;
@@ -47,6 +47,7 @@ public class ChangeScenes : MonoBehaviour
     // Change the scene to a scene specified in the string field
     public void ChangeScene(string DestinationScene)
     {
+        MainManager.Instance.SetWaypoint(destinationPosition);
         SceneManager.LoadScene(DestinationScene);
     }
 
