@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float playerVelocity; //vertical velocity for jumping
 
     private GameObject _pauseMenu;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

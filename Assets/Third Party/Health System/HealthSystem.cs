@@ -14,11 +14,14 @@ public class HealthSystem : MonoBehaviour
     public HealthBar healthBar;
 
     private GameObject _resultsScreen;
+
+    private AudioManager _playerAudioManager;
     
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _resultsScreen = GameObject.Find("UI").transform.Find("ResultsScreen").gameObject;
+        _playerAudioManager = GameObject.Find("Player").GetComponent<AudioManager>();
         
         healthBar.SetMaxHealth(MainManager.Instance.maxHealth);
         healthBar.SetHealth(MainManager.Instance.health);
@@ -44,6 +47,7 @@ public class HealthSystem : MonoBehaviour
         
         if ((!collisionObject.CompareTag("Enemy") && !collisionObject.CompareTag("Boss")) || _vulnerabilityCooldownTimer > 0f) return;
         
+        _playerAudioManager.PlaySound("impact");
         TakeDamage(collisionObject.GetComponent<EnemyManager>().attackPower);
         _vulnerabilityCooldownTimer = vulnerabilityCooldown;
         StartCoroutine(VulnerabilityCooldownCountdownCoroutine());

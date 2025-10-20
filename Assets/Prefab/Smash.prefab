@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8176718810274672913}
   - component: {fileID: 5960740179748739829}
+  - component: {fileID: 4000883390028811909}
   - component: {fileID: 704132619198728562}
   - component: {fileID: 5365817292592778504}
   m_Layer: 0
@@ -224,7 +225,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.31, g: 0, b: 0.48, a: 1}
+      maxColor: {r: 0.42, g: 0.26, b: 0.26, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4757,6 +4758,22 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &4000883390028811909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3841187179020024127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f0bae54f6eadf4fbbe9cf89a991c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - impact
+  audioClips:
+  - {fileID: 8300000, guid: 8f546a203fa299b42b75b4cc8a9840e3, type: 3}
 --- !u!199 &704132619198728562
 ParticleSystemRenderer:
   serializedVersion: 6
