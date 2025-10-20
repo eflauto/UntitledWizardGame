@@ -55,8 +55,8 @@ MonoBehaviour:
   fpsTarget: 60
   musicVolume: 100
   sfxVolume: 100
-  mouseSensitivityX: 2
-  mouseSensitivityY: 2
+  mouseSensitivityX: 3
+  mouseSensitivityY: 3
   invertX: 0
   invertY: 0
   paused: 0

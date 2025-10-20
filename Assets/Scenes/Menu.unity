@@ -667,14 +667,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3687842572347319911, guid: fbeb9192e462a6f4e8a49cce46b742e8, type: 3}
-      propertyPath: mouseSensitivityX
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687842572347319911, guid: fbeb9192e462a6f4e8a49cce46b742e8, type: 3}
-      propertyPath: mouseSensitivityY
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7552598978815739832, guid: fbeb9192e462a6f4e8a49cce46b742e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
