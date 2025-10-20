@@ -80,7 +80,6 @@ public class PlayerController : MonoBehaviour
         move.y += playerVelocity; // apply the player's velocity to the movement vector;
         playerController.Move(move * Time.deltaTime); // .move is called, noted that .move should be called only once
         //Debug.Log(playerController.isGrounded); 
-        
     }
 
     private Vector3 AdjustVelocityToSlope(Vector3 velocity)
