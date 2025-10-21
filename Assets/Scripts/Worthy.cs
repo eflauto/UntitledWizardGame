@@ -65,6 +65,7 @@ public class Worthy : MonoBehaviour
         }
         
         _worthy.SetActive(false);
+        MainManager.Instance.SetWaypoint("ForestSpawn");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
