@@ -5,11 +5,11 @@ public class AudioManager : MonoBehaviour
 {
     public string[] audioTags;
     public AudioClip[] audioClips;
-    private Dictionary<string, AudioClip> _audioDictionary = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> _audioDictionary = new();
     
     private AudioSource _audioSource;
     
-    private void Start()
+    protected void Start()
     {
         for (var i = 0; i < audioTags.Length; i++)
         {
