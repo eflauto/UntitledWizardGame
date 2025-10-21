@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Slime : EnemyManager
@@ -11,10 +12,6 @@ public class Slime : EnemyManager
     public GameObject bullet;
     public float bulletForce = 20f;
     
-    private AudioManager _audioManager;
-    
-    private bool _isAggro;
-    private bool _isDead;
     private bool _preparingToJump;
     private bool _preparingToShoot;
     private bool _isGrounded = true;
@@ -23,21 +20,21 @@ public class Slime : EnemyManager
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
-        _audioManager = GetComponent<AudioManager>();
+        audioManager = GetComponent<AudioManager>();
     }
 
     private new void Update()
     {
-        if (_isDead) return;
+        if (isDead) return;
 
         if (health <= 0f)
         {
-            _isDead = true;
+            isDead = true;
             StartCoroutine(ScaleToZeroCoroutine());
             return;
         }
 
-        if (!_isAggro) return;
+        if (!isAggro) return;
         
         if (_preparingToJump || _preparingToShoot) return;
         
@@ -74,7 +71,7 @@ public class Slime : EnemyManager
         var attackObjectScript = collision.gameObject.GetComponent<Attack>();
         var damage = attackObjectScript.attackPower;
 
-        if (!_isAggro) _isAggro = true;
+        if (!isAggro) isAggro = true;
 
         TakeDamage(damage);
     }
@@ -103,7 +100,7 @@ public class Slime : EnemyManager
         rb.constraints ^= RigidbodyConstraints.FreezePosition;
         rb.useGravity = true;
         rb.AddForce(-(transform.position - player.position) + new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-        _audioManager.PlaySound("slime_jump", transform.position);
+        audioManager.PlaySound("slime_jump", transform.position);
         _preparingToJump = false;
         _isGrounded = false;
     }
@@ -128,7 +125,7 @@ public class Slime : EnemyManager
             var bulletInstance = Instantiate(bullet, bulletPosition, transform.rotation);
         
             bulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce, ForceMode.Impulse);
-            _audioManager.PlaySound("slime_spit", transform.position);
+            audioManager.PlaySound("slime_spit", transform.position);
         }
         
         _preparingToShoot = false;
@@ -136,13 +133,13 @@ public class Slime : EnemyManager
 
     private void HandleTrigger(Collider other)
     {
-        if (_isAggro) return;
+        if (isAggro) return;
 
         if (!other.gameObject.CompareTag("Player")) return;
 
         Physics.Raycast(transform.position, other.transform.position - transform.position, out var hit);
 
-        if (hit.collider.gameObject.CompareTag("Player")) _isAggro = true;
+        if (hit.collider.gameObject.CompareTag("Player")) isAggro = true;
     }
 
     private IEnumerator ScaleToZeroCoroutine()
