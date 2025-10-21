@@ -57,4 +57,9 @@ public class AudioManager : MonoBehaviour
         _audioSource.spatialBlend = spatialize;
         _audioSource.maxDistance = distance;
     }
+    
+    public void SetVolume()
+    {
+        _audioSource.volume = MainManager.Instance.musicVolume / 100f;
+    }
 }

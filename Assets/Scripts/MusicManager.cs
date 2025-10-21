@@ -22,8 +22,13 @@ public class MusicManager : MonoBehaviour
 
     private void PlaySound()
     {
-        _audioSource.volume = MainManager.Instance.sfxVolume / 100f;
+        _audioSource.volume = MainManager.Instance.musicVolume / 100f;
         _audioSource.clip = song;
         _audioSource.Play();
+    }
+
+    public void SetVolume()
+    {
+        _audioSource.volume = MainManager.Instance.musicVolume / 100f;
     }
 }

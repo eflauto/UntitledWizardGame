@@ -78,6 +78,19 @@ public class OptionsMenu : MonoBehaviour
         MainManager.Instance.musicVolume = (int)volumeSlider.value;
         MainManager.Instance.sfxVolume = (int)volumeSlider.value;
         volumeSlider.transform.Find("Value").GetComponent<TextMeshProUGUI>().text = MainManager.Instance.musicVolume.ToString();
+        
+        var musicManagers = FindObjectsByType<MusicManager>(FindObjectsSortMode.None);
+        var audioManagers = FindObjectsByType<AudioManager>(FindObjectsSortMode.None);
+        
+        foreach (var musicManager in musicManagers)
+        {
+            musicManager.SetVolume();
+        }
+
+        foreach (var audioManager in audioManagers)
+        {
+            audioManager.SetVolume();
+        }
     }
 
     private void UpdateVolume(int volume)
