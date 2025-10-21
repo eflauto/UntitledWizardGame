@@ -1,14 +1,15 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-    private Transform _player;
+    [DoNotSerialize] protected Transform player;
     
     private NavMeshAgent _agent;
     
-    private Rigidbody _rigidbody;
+    [DoNotSerialize] protected Rigidbody rb;
 
     public float health = 20f;
     public float attackPower = 5f;
@@ -20,9 +21,9 @@ public class EnemyManager : MonoBehaviour
     
     protected void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
-        _rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
     
     protected void Update()
@@ -39,7 +40,7 @@ public class EnemyManager : MonoBehaviour
 
         if (isAggro)
         {
-            _agent.SetDestination(_player.position);
+            _agent.SetDestination(player.position);
         }
     }
 

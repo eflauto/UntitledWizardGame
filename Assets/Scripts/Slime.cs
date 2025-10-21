@@ -11,19 +11,18 @@ public class Slime : EnemyManager
     public GameObject bullet;
     public float bulletForce = 20f;
     
-    private Transform _player;
-    private Rigidbody _rigidbody;
     private AudioManager _audioManager;
     
     private bool _isAggro;
     private bool _isDead;
     private bool _preparingToJump;
     private bool _preparingToShoot;
+    private bool _isGrounded = true;
 
     private new void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _rigidbody = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody>();
         _audioManager = GetComponent<AudioManager>();
     }
 
@@ -42,16 +41,16 @@ public class Slime : EnemyManager
         
         if (_preparingToJump || _preparingToShoot) return;
         
-        if (!CheckIfGrounded()) return;
+        if (!_isGrounded) return;
 
-        if (_rigidbody.useGravity)
+        if (rb.useGravity)
         {
-            _rigidbody.useGravity = false;
-            _rigidbody.linearVelocity = Vector3.zero;
-            _rigidbody.constraints ^= RigidbodyConstraints.FreezePosition;
+            rb.useGravity = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.constraints ^= RigidbodyConstraints.FreezePosition;
         }
 
-        var distanceToPlayer = Vector3.Distance(_player.position, transform.position);
+        var distanceToPlayer = Vector3.Distance(player.position, transform.position);
 
         if (distanceToPlayer <= startJumpDistance)
         {
@@ -68,6 +67,8 @@ public class Slime : EnemyManager
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Environment")) _isGrounded = true;
+        
         if (!collision.gameObject.CompareTag("Attack")) return;
 
         var attackObjectScript = collision.gameObject.GetComponent<Attack>();
@@ -88,11 +89,6 @@ public class Slime : EnemyManager
         HandleTrigger(other);
     }
 
-    private bool CheckIfGrounded()
-    { 
-        return Physics.Raycast(transform.position, -Vector3.up, 1.35f);
-    }
-
     private IEnumerator JumpCoroutine()
     {
         var timer = 0f;
@@ -103,12 +99,13 @@ public class Slime : EnemyManager
             yield return null;
         }
         
-        transform.LookAt(_player.position);
-        _rigidbody.constraints ^= RigidbodyConstraints.FreezePosition;
-        _rigidbody.useGravity = true;
-        _rigidbody.AddForce(-(transform.position - _player.position) + new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        transform.LookAt(player.position);
+        rb.constraints ^= RigidbodyConstraints.FreezePosition;
+        rb.useGravity = true;
+        rb.AddForce(-(transform.position - player.position) + new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         _audioManager.PlaySound("slime_jump", transform.position);
         _preparingToJump = false;
+        _isGrounded = false;
     }
 
     private IEnumerator ShootCoroutine()
@@ -120,14 +117,20 @@ public class Slime : EnemyManager
             timer += Time.deltaTime;
             yield return null;
         }
+
+        Physics.Raycast(transform.position, player.position - transform.position, out var hit);
+
+        if (hit.collider.CompareTag("Player"))
+        {
+            transform.LookAt(player.position);
         
-        transform.LookAt(_player.position);
+            var bulletPosition = transform.forward * 3f + transform.position;
+            var bulletInstance = Instantiate(bullet, bulletPosition, transform.rotation);
         
-        var bulletPosition = transform.forward * 3f + transform.position;
-        var bulletInstance = Instantiate(bullet, bulletPosition, transform.rotation);
+            bulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce, ForceMode.Impulse);
+            _audioManager.PlaySound("slime_spit", transform.position);
+        }
         
-        bulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce, ForceMode.Impulse);
-        _audioManager.PlaySound("slime_spit", transform.position);
         _preparingToShoot = false;
     }
 
