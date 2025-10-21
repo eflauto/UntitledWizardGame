@@ -45,10 +45,19 @@ public class HealthSystem : MonoBehaviour
     {
         var collisionObject = collision.gameObject;
         
-        if ((!collisionObject.CompareTag("Enemy") && !collisionObject.CompareTag("Boss")) || _vulnerabilityCooldownTimer > 0f) return;
+        if ((!collisionObject.CompareTag("Enemy") && !collisionObject.CompareTag("EnemyBullet")) || _vulnerabilityCooldownTimer > 0f) return;
         
         _playerAudioManager.PlaySound("impact");
-        TakeDamage(collisionObject.GetComponent<EnemyManager>().attackPower);
+
+        if (collisionObject.CompareTag("Enemy"))
+        {
+            TakeDamage(collisionObject.GetComponent<EnemyManager>().attackPower);
+        }
+        else
+        {
+            TakeDamage(collisionObject.GetComponent<SlimeBall>().attackPower);
+        }
+        
         _vulnerabilityCooldownTimer = vulnerabilityCooldown;
         StartCoroutine(VulnerabilityCooldownCountdownCoroutine());
     }
