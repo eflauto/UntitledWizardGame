@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5439465139710389977}
   - component: {fileID: 6432953979161750082}
   - component: {fileID: 4425831053277031606}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7767123933118284173}
   - component: {fileID: 8593926266970631974}
   - component: {fileID: 8767668436003707500}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 1595265789118675507}
   - component: {fileID: 5751670959910303591}
   - component: {fileID: 2658789155287145963}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Boulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8928822193090711711}
   serializedVersion: 4
-  m_Mass: 2
+  m_Mass: 12
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 1479786844968158364}
   - component: {fileID: 3460046482780545033}
   - component: {fileID: 8519953250113168744}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

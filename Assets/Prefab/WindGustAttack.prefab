@@ -131,8 +131,8 @@ MonoBehaviour:
   manaCost: 20
   windCapsuleObject: {fileID: 9091656060458616249, guid: 7f074d8528b24cc4f9bb3a53f58eb428, type: 3}
   windDistance: 5
-  windRadius: 0.6
-  windForce: 20
+  windRadius: 0.5
+  windForce: 40
   layerMask:
     serializedVersion: 2
     m_Bits: 119
