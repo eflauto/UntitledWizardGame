@@ -69,7 +69,7 @@ MonoBehaviour:
   waypointVectors:
   - {x: 0, y: 40.5, z: 0}
   - {x: 116.3, y: 53.4, z: 115.1}
-  - {x: 252.5, y: 1.8, z: 185.9}
-  - {x: 253.9, y: 33.5, z: 250}
+  - {x: 252.47, y: 1.72, z: 185.83}
+  - {x: 256.29, y: 33, z: 249.9}
   debugEnabled: 0
   debugSprintSpeed: 20
