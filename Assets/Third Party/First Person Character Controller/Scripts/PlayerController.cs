@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             MainManager.Instance.debugEnabled = !MainManager.Instance.debugEnabled;
+            MainManager.Instance.unlockedSpellsCount = 3;
         }
         
         float h = Input.GetAxisRaw("Horizontal"); 

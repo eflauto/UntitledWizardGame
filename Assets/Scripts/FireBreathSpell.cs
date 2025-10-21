@@ -21,8 +21,16 @@ public class FireBreathSpell : Attack
 
         foreach (var rayHit in fireBlastedHits)
         {
-            // TODO: implement damage, other fire-related effects
-            continue;
+            if (!rayHit.collider.gameObject.CompareTag("Enemy") && rayHit.collider.gameObject.name != "Web") return;
+
+            if (rayHit.collider.gameObject.name == "Web")
+            {
+                Destroy(rayHit.collider.gameObject);
+            }
+            else
+            {
+                rayHit.collider.gameObject.GetComponent<EnemyManager>().TakeDamage(attackPower);
+            }
         }
         
         //Destroy(instance, 2.0f); TODO: get self-destruction working
