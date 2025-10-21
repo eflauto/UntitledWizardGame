@@ -74,8 +74,6 @@ public class EnemyManager : MonoBehaviour
         
         Physics.Raycast(transform.position, other.transform.position - transform.position, out var hit);
         
-        Debug.Log(hit.collider.name);
-        
         if (hit.collider.gameObject.CompareTag("Player"))
         {
             isAggro = true;

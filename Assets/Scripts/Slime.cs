@@ -142,8 +142,6 @@ public class Slime : EnemyManager
 
         Physics.Raycast(transform.position, other.transform.position - transform.position, out var hit);
 
-        Debug.Log(hit.collider.name);
-
         if (hit.collider.gameObject.CompareTag("Player")) _isAggro = true;
     }
 
