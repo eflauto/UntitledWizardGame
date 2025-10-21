@@ -29,4 +29,32 @@ public class AudioManager : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(_audioDictionary[audioTag], position, MainManager.Instance.sfxVolume / 100f);
     }
+
+    public void PlayLoop(string audioTag)
+    {
+        _audioSource.loop = true;
+        PlaySound(audioTag);
+    }
+
+    public void PlayLoop(string audioTag, Vector3 position)
+    {
+        _audioSource.loop = true;
+        PlaySound(audioTag, position);
+    }
+
+    public void StopSound()
+    {
+        _audioSource.Stop();
+    }
+
+    public bool SoundPlaying()
+    {
+        return _audioSource.isPlaying;
+    }
+
+    public void SetSpatializeSettings(float spatialize, int distance)
+    {
+        _audioSource.spatialBlend = spatialize;
+        _audioSource.maxDistance = distance;
+    }
 }

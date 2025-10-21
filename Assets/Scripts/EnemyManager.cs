@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour
     
     [DoNotSerialize] protected Rigidbody rb;
 
+    [DoNotSerialize] protected AudioManager audioManager;
+
     public float health = 20f;
     public float attackPower = 5f;
 
@@ -24,6 +26,7 @@ public class EnemyManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        audioManager = GetComponent<AudioManager>();
     }
     
     protected void Update()
@@ -35,12 +38,19 @@ public class EnemyManager : MonoBehaviour
             isDead = true;
             _agent.isStopped = true;
             StartCoroutine(ScaleToZeroCoroutine());
+            audioManager.StopSound();
             return;
         }
 
         if (isAggro)
         {
             _agent.SetDestination(player.position);
+
+            if (!audioManager.SoundPlaying())
+            {
+                audioManager.SetSpatializeSettings(1f, 25);
+                audioManager.PlayLoop("spider_crawl");
+            }
         }
     }
 
