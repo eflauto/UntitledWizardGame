@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,9 +25,15 @@ public class PlayerController : MonoBehaviour
         playerController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         _pauseMenu = GameObject.Find("UI").transform.Find("PauseMenu").gameObject;
-        transform.position = MainManager.Instance.waypoints[MainManager.Instance.currentWaypoint];
+        StartCoroutine(DelayedPositionChange());
     }
 
+    IEnumerator DelayedPositionChange()
+    {
+        yield return null;
+        transform.position = MainManager.Instance.waypoints[MainManager.Instance.currentWaypoint];
+    }
+    
     // Update is called once per frame
     void Update()
     {
