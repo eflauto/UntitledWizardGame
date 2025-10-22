@@ -101,3 +101,6 @@ InitTestScene*.unity*
 Assets/Settings/PC_RPAsset.asset
 Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
 ProjectSettings/GraphicsSettings.asset
+Assets/Settings/PC_RPAsset.asset
+Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
+ProjectSettings/GraphicsSettings.asset
