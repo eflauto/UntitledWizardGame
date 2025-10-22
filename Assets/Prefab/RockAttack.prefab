@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 5
-  manaCost: 10
+  manaCost: 15
   rockObject: {fileID: 4031110009076943553}
   explosionParticles: {fileID: 5960740179748739829, guid: c313d7c2382c08b498382064b02b7099, type: 3}
   particleColor: {r: 0.42, g: 0.26, b: 0.26, a: 1}

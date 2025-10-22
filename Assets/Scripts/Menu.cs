@@ -9,8 +9,8 @@ public class Menu : MonoBehaviour
         MainManager.Instance.health = MainManager.Instance.maxHealth;
         MainManager.Instance.mana = MainManager.Instance.maxMana;
         MainManager.Instance.unlockedSpellsCount = 0;
-        MainManager.Instance.SetWaypoint("ForestSpawn");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        MainManager.Instance.SetWaypoint("TowerSpawn");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void Resume()
