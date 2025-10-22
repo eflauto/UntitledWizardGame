@@ -51,7 +51,7 @@ MonoBehaviour:
   fireDistance: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
 --- !u!1 &3249532378943885627
 GameObject:
   m_ObjectHideFlags: 0

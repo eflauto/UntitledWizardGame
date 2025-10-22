@@ -44,14 +44,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3355a6464542b174ab53195f699eefbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 30
   health: 30
+  maxMana: 50
+  mana: 50
+  manaRegen: 8
   selectedSpell: 0
+  unlockedSpellsCount: 0
+  currentWaypoint: ForestSpawn
   fpsCap: 1
   fpsTarget: 60
   musicVolume: 100
   sfxVolume: 100
-  mouseSensitivityX: 2
-  mouseSensitivityY: 2
+  mouseSensitivityX: 3
+  mouseSensitivityY: 3
   invertX: 0
   invertY: 0
   paused: 0
+  waypointNames:
+  - ForestSpawn
+  - ForestPortal
+  - TowerSpawn
+  - TowerPortal
+  waypointVectors:
+  - {x: 0, y: 40.5, z: 0}
+  - {x: 116.3, y: 53.4, z: 115.1}
+  - {x: 252.47, y: 1.72, z: 185.83}
+  - {x: 256.29, y: 33, z: 249.9}
+  debugEnabled: 0
+  debugSprintSpeed: 20

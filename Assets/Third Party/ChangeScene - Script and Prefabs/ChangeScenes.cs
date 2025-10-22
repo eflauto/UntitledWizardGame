@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,9 +23,9 @@ public class ChangeScenes : MonoBehaviour
     // ############### VARIABLES ###############
 
     [Tooltip("The string name of the destination Scene.")]
-    public string DestinationSceneString = null;
+    public string DestinationSceneString;
 
-    public Vector3 DestinationPosition = Vector3.zero;
+    public string destinationPosition;
 
     [Tooltip("Enabling the tag filter requires a colliding entity to have a tag that matches the tag written in the 'Colliding Tag' variable.")]
     public bool EnableTagFilter = false;
@@ -40,16 +41,21 @@ public class ChangeScenes : MonoBehaviour
         // Ensures a destination is designated, and checks for tag filter
         if (DestinationSceneString != null && (!EnableTagFilter || (EnableTagFilter && ((CollidingTag != null) && (other.CompareTag(CollidingTag))))))
         {
-            ChangeScene(DestinationSceneString);
+            StartCoroutine(ChangeScene(DestinationSceneString));
         }
     }
 
     // Change the scene to a scene specified in the string field
-    public void ChangeScene(string DestinationScene)
+    private IEnumerator ChangeScene(string DestinationScene)
     {
+        MainManager.Instance.SetWaypoint(destinationPosition);
+
+        while (MainManager.Instance.currentWaypoint != destinationPosition)
+        {
+            yield return null;
+        }
+        
         SceneManager.LoadScene(DestinationScene);
     }
-
-
 }
 

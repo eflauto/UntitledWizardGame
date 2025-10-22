@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,15 +18,22 @@ public class PlayerController : MonoBehaviour
     private float playerVelocity; //vertical velocity for jumping
 
     private GameObject _pauseMenu;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         _pauseMenu = GameObject.Find("UI").transform.Find("PauseMenu").gameObject;
+        StartCoroutine(DelayedPositionChange());
     }
 
+    IEnumerator DelayedPositionChange()
+    {
+        yield return null;
+        transform.position = MainManager.Instance.waypoints[MainManager.Instance.currentWaypoint];
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -63,6 +72,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             MainManager.Instance.debugEnabled = !MainManager.Instance.debugEnabled;
+            MainManager.Instance.unlockedSpellsCount = 3;
         }
         
         float h = Input.GetAxisRaw("Horizontal"); 
@@ -80,7 +90,6 @@ public class PlayerController : MonoBehaviour
         move.y += playerVelocity; // apply the player's velocity to the movement vector;
         playerController.Move(move * Time.deltaTime); // .move is called, noted that .move should be called only once
         //Debug.Log(playerController.isGrounded); 
-        
     }
 
     private Vector3 AdjustVelocityToSlope(Vector3 velocity)

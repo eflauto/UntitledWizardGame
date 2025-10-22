@@ -1,27 +1,32 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-    private Transform _player;
+    [DoNotSerialize] protected Transform player;
     
     private NavMeshAgent _agent;
     
-    private Rigidbody _rigidbody;
+    [DoNotSerialize] protected Rigidbody rb;
+
+    [DoNotSerialize] protected AudioManager audioManager;
 
     public float health = 20f;
     public float attackPower = 5f;
 
     public float scaleDuration = 2f;
-    
+
+    protected bool isAggro = false;
     protected bool isDead = false;
     
     protected void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
-        _rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        audioManager = GetComponent<AudioManager>();
     }
     
     protected void Update()
@@ -33,10 +38,20 @@ public class EnemyManager : MonoBehaviour
             isDead = true;
             _agent.isStopped = true;
             StartCoroutine(ScaleToZeroCoroutine());
+            audioManager.StopSound();
             return;
         }
-        
-        _agent.SetDestination(_player.position);
+
+        if (isAggro)
+        {
+            _agent.SetDestination(player.position);
+
+            if (!audioManager.SoundPlaying())
+            {
+                audioManager.SetSpatializeSettings(1f, 25);
+                audioManager.PlayLoop("spider_crawl");
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -46,7 +61,33 @@ public class EnemyManager : MonoBehaviour
         var attackObjectScript = collision.gameObject.GetComponent<Attack>();
         var damage = attackObjectScript.attackPower;
         
+        if (!isAggro) { isAggro = true; }
+        
         TakeDamage(damage);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        HandleTrigger(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        HandleTrigger(other);
+    }
+
+    private void HandleTrigger(Collider other)
+    {
+        if (isAggro) return;
+
+        if (!other.gameObject.CompareTag("Player")) return;
+        
+        Physics.Raycast(transform.position, other.transform.position - transform.position, out var hit);
+        
+        if (hit.collider.gameObject.CompareTag("Player"))
+        {
+            isAggro = true;
+        }
     }
     
     public void TakeDamage(float damage)

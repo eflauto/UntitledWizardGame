@@ -14,11 +14,14 @@ public class HealthSystem : MonoBehaviour
     public HealthBar healthBar;
 
     private GameObject _resultsScreen;
+
+    private AudioManager _playerAudioManager;
     
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _resultsScreen = GameObject.Find("UI").transform.Find("ResultsScreen").gameObject;
+        _playerAudioManager = GameObject.Find("Player").GetComponent<AudioManager>();
         
         healthBar.SetMaxHealth(MainManager.Instance.maxHealth);
         healthBar.SetHealth(MainManager.Instance.health);
@@ -42,9 +45,19 @@ public class HealthSystem : MonoBehaviour
     {
         var collisionObject = collision.gameObject;
         
-        if ((!collisionObject.CompareTag("Enemy") && !collisionObject.CompareTag("Boss")) || _vulnerabilityCooldownTimer > 0f) return;
+        if ((!collisionObject.CompareTag("Enemy") && !collisionObject.CompareTag("EnemyBullet")) || _vulnerabilityCooldownTimer > 0f) return;
         
-        TakeDamage(collisionObject.GetComponent<EnemyManager>().attackPower);
+        _playerAudioManager.PlaySound("impact");
+
+        if (collisionObject.CompareTag("Enemy"))
+        {
+            TakeDamage(collisionObject.GetComponent<EnemyManager>().attackPower);
+        }
+        else
+        {
+            TakeDamage(collisionObject.GetComponent<SlimeBall>().attackPower);
+        }
+        
         _vulnerabilityCooldownTimer = vulnerabilityCooldown;
         StartCoroutine(VulnerabilityCooldownCountdownCoroutine());
     }

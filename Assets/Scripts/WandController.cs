@@ -9,6 +9,7 @@ public class WandController : MonoBehaviour
     private Animator _animator;
 
     private Camera _playerCamera;
+    private AudioManager _playerAudioManager;
 
     public ManaBar manaBar;
 
@@ -16,6 +17,7 @@ public class WandController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        _playerAudioManager = GameObject.Find("Player").GetComponent<AudioManager>();
         
         manaBar.SetMaxMana(MainManager.Instance.maxMana);
         manaBar.SetMana(MainManager.Instance.mana);
@@ -82,6 +84,8 @@ public class WandController : MonoBehaviour
         
         if (attackObjectComponent.manaCost > MainManager.Instance.mana) return;
         
+        _playerAudioManager.PlaySound("wind_gust");
+        
         MainManager.Instance.mana -= attackObjectComponent.manaCost;
         manaBar.SetMana(MainManager.Instance.mana);
         
@@ -102,6 +106,8 @@ public class WandController : MonoBehaviour
         
         if (rockAttack.manaCost > MainManager.Instance.mana) return;
         
+        _playerAudioManager.PlaySound("wind_gust");
+        
         MainManager.Instance.mana -= rockAttack.manaCost;
         manaBar.SetMana(MainManager.Instance.mana);
         
@@ -116,6 +122,8 @@ public class WandController : MonoBehaviour
         
         if (spellAttack.manaCost > MainManager.Instance.mana) return;
         
+        _playerAudioManager.PlaySound("blow_air");
+        
         MainManager.Instance.mana -= spellAttack.manaCost;
         manaBar.SetMana(MainManager.Instance.mana);
         
@@ -129,6 +137,8 @@ public class WandController : MonoBehaviour
         var spellAttack = spellObject.GetComponent<FireBreathSpell>();
         
         if (spellAttack.manaCost > MainManager.Instance.mana) return;
+        
+        _playerAudioManager.PlaySound("blow_air");
 
         MainManager.Instance.mana -= spellAttack.manaCost;
         manaBar.SetMana(MainManager.Instance.mana);
