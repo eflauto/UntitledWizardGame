@@ -98,3 +98,6 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 /.vscode
+Assets/Settings/PC_RPAsset.asset
+Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
+ProjectSettings/GraphicsSettings.asset
