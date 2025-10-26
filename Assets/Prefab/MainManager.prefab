@@ -51,7 +51,7 @@ MonoBehaviour:
   manaRegen: 8
   selectedSpell: 0
   unlockedSpellsCount: 0
-  currentWaypoint: TowerSpawn
+  currentWaypoint: 
   fpsCap: 1
   fpsTarget: 60
   musicVolume: 100
