@@ -16,6 +16,8 @@ public class Slime : EnemyManager
     private bool _preparingToShoot;
     private bool _isGrounded = true;
 
+    private int _didNotShootInstances = 0;
+
     private new void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -35,6 +37,12 @@ public class Slime : EnemyManager
         }
 
         if (!isAggro) return;
+
+        if (_didNotShootInstances > 2)
+        {
+            isAggro = false;
+            return;
+        }
         
         if (_preparingToJump || _preparingToShoot) return;
         
@@ -126,6 +134,10 @@ public class Slime : EnemyManager
         
             bulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce, ForceMode.Impulse);
             audioManager.PlaySound("slime_spit", transform.position);
+        }
+        else
+        {
+            _didNotShootInstances++;
         }
         
         _preparingToShoot = false;
