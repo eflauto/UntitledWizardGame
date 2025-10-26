@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3977311290134805708}
   - component: {fileID: 8552677885452646964}
   - component: {fileID: 3339087962569068309}
-  - component: {fileID: 8485249561878921939}
   - component: {fileID: 1589042227764220495}
   - component: {fileID: 6237005637015541772}
+  - component: {fileID: 8485249561878921939}
   - component: {fileID: 995376832013208363}
   - component: {fileID: -5269530484561488178}
   m_Layer: 0
@@ -115,27 +115,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &8485249561878921939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4601731883540878242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a66b3159ed9366741a79e1014aa6fb61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPower: 0
-  manaCost: 20
-  windCapsuleObject: {fileID: 9091656060458616249, guid: 7f074d8528b24cc4f9bb3a53f58eb428, type: 3}
-  windDistance: 5
-  windRadius: 0.5
-  windForce: 60
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 119
 --- !u!330 &1589042227764220495
 ParticleSystemForceField:
   m_ObjectHideFlags: 0
@@ -5354,6 +5333,27 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &8485249561878921939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601731883540878242}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66b3159ed9366741a79e1014aa6fb61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 0
+  manaCost: 20
+  windCapsuleObject: {fileID: 9091656060458616249, guid: 7f074d8528b24cc4f9bb3a53f58eb428, type: 3}
+  windDistance: 5
+  windRadius: 0.5
+  windForce: 60
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!199 &995376832013208363
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5443,3 +5443,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82942a9878517b349b361c4f295ae9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extraTime: 3

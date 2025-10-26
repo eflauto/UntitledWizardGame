@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7781460895971594400}
+  - component: {fileID: 3610954286632195077}
   m_Layer: 0
   m_Name: WindGustParent
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 2797222286708198838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3610954286632195077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091656060458616249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66b3159ed9366741a79e1014aa6fb61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 0
+  manaCost: 20
+  windCapsuleObject: {fileID: 9091656060458616249}
+  windDistance: 4
+  windRadius: 0.5
+  windForce: 60
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!1001 &418047315718055887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,6 +106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindGustAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 8485249561878921939, guid: 8fbde40fb464c9746a681eb23a45df78, type: 3}
+      propertyPath: windCapsuleObject
+      value: 
+      objectReference: {fileID: 9091656060458616249}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

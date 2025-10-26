@@ -126,8 +126,9 @@ public class WandController : MonoBehaviour
         
         MainManager.Instance.mana -= spellAttack.manaCost;
         manaBar.SetMana(MainManager.Instance.mana);
+        var instance = Instantiate(spellObject, _playerCamera.transform.position, _playerCamera.transform.rotation).GetComponent<WindGustSpell>();
         
-        spellAttack.WindGust(_playerCamera.transform);
+        instance.WindGust(_playerCamera.transform);
 
     }
     private void FireBreath()
