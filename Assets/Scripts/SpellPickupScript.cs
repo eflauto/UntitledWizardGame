@@ -6,18 +6,20 @@ using System.Collections;
 public class SpellPickupScript : MonoBehaviour
 {
     private TextMeshProUGUI _newSpellText;
-    private Color _originalTextColor;
+    private bool _triggered = false;
 
     private void Start()
     {
         _newSpellText = GameObject.Find("UI").transform.Find("NewSpell").GetComponent<TextMeshProUGUI>();
-        _originalTextColor =  _newSpellText.color;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_triggered) return;
+        
         if (!other.CompareTag("Player")) return;
         
+        _triggered = true;
         MainManager.Instance.unlockedSpellsCount += 1;
         transform.localScale = Vector3.zero;
         
