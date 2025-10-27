@@ -25,7 +25,11 @@ public class PlayerController : MonoBehaviour
         playerController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         _pauseMenu = GameObject.Find("UI").transform.Find("PauseMenu").gameObject;
-        StartCoroutine(DelayedPositionChange());
+
+        if (MainManager.Instance.currentWaypoint != "")
+        {
+            StartCoroutine(DelayedPositionChange());
+        }
     }
 
     IEnumerator DelayedPositionChange()
