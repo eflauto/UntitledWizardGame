@@ -21,12 +21,11 @@ public class FireBreathSpell : Attack
 
         foreach (var rayHit in fireBlastedHits)
         {
-            //Debug.Log(rayHit.collider.gameObject.name);
-            if (!rayHit.collider.gameObject.CompareTag("Enemy") && rayHit.collider.gameObject.name != "Web") return;
+            if (!rayHit.collider.gameObject.CompareTag("Enemy") && !rayHit.collider.gameObject.name.Contains("Plane")) return;
 
-            if (rayHit.collider.gameObject.name == "Web")
+            if (rayHit.transform.parent.name == "Web")
             {
-                Destroy(rayHit.collider.gameObject);
+                Destroy(rayHit.transform.parent.gameObject);
             }
             else
             {
