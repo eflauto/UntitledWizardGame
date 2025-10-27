@@ -44,6 +44,8 @@ public class Slime : EnemyManager
             return;
         }
         
+        transform.LookAt(player.position);
+        
         if (_preparingToJump || _preparingToShoot) return;
         
         if (!_isGrounded) return;
