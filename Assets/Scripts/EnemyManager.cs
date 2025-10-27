@@ -20,6 +20,8 @@ public class EnemyManager : MonoBehaviour
 
     protected bool isAggro = false;
     protected bool isDead = false;
+
+    private Animator _animator;
     
     protected void Start()
     {
@@ -27,6 +29,7 @@ public class EnemyManager : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         audioManager = GetComponent<AudioManager>();
+        _animator = transform.GetChild(0).GetComponent<Animator>();
     }
     
     protected void Update()
@@ -39,6 +42,7 @@ public class EnemyManager : MonoBehaviour
             _agent.isStopped = true;
             StartCoroutine(ScaleToZeroCoroutine());
             audioManager.StopSound();
+            _animator.SetTrigger(Animator.StringToHash("Dead"));
             return;
         }
 
@@ -60,8 +64,12 @@ public class EnemyManager : MonoBehaviour
 
         var attackObjectScript = collision.gameObject.GetComponent<Attack>();
         var damage = attackObjectScript.attackPower;
-        
-        if (!isAggro) { isAggro = true; }
+
+        if (!isAggro)
+        {
+            isAggro = true;
+            _animator.SetTrigger(Animator.StringToHash("Walking"));
+        }
         
         TakeDamage(damage);
     }
@@ -87,6 +95,7 @@ public class EnemyManager : MonoBehaviour
         if (hit.collider.gameObject.CompareTag("Player"))
         {
             isAggro = true;
+            _animator.SetTrigger(Animator.StringToHash("Walking"));
         }
     }
     
