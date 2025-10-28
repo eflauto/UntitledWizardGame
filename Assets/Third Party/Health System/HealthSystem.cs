@@ -69,6 +69,15 @@ public class HealthSystem : MonoBehaviour
         healthBar.SetHealth(MainManager.Instance.health);
     }
 
+    public void HealthRestore(float healing = 0.0f)
+    {
+        if (healing == 0)
+        {
+            MainManager.Instance.health = MainManager.Instance.maxHealth;
+            healthBar.SetHealth(MainManager.Instance.health);
+        }
+    }
+
     private void SetResultText()
     {
         if (resultText is null) return;

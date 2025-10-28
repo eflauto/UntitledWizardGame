@@ -21,6 +21,8 @@ public class SpellPickupScript : MonoBehaviour
         
         _triggered = true;
         MainManager.Instance.unlockedSpellsCount += 1;
+        MainManager.Instance.health = MainManager.Instance.maxHealth;
+        GameObject.FindAnyObjectByType<HealthSystem>().HealthRestore();
         transform.localScale = Vector3.zero;
         
         StartCoroutine(ChangeTextOpacityCoroutine(1f));
